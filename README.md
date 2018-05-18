@@ -116,3 +116,9 @@ $jobs = $service->getJobsByUser($user);
 /** @var Job[] $jobs */
 $jobs = $service->getJobsByTemplate($template);
 ```
+
+## Running tests
+
+```php
+$ vendor/bin/phpspec run
+```
