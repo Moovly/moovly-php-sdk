@@ -25,7 +25,7 @@ use Moovly\SDK\Factory\JobFactory;
 use Moovly\SDK\Model\MoovlyObject;
 use Moovly\SDK\Model\Library;
 
-# Visit
+# Visit https://developer.moovly.com/docs/authentication for a token
 $token = 'YOUR MOOVLY TOKEN';
 $client = new APIClient();
 $service = new MoovlyService($client, $token);
