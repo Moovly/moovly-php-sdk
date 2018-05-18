@@ -1,0 +1,25 @@
+{
+    "name": "moovly/moovly-php-sdk",
+    "description": "The Moovly PHP SDK",
+    "keywords": ["video", "automation", "moovly"],
+    "type": "library",
+    "require": {
+        "php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "nicmart/string-template": "^0.1.1"
+    },
+    "authors": [
+        {
+            "name": "Niels",
+            "email": "niels.vermaut@moovly.com"
+        }
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Moovly\\SDK\\": "src/"
+        }
+    }
+}
