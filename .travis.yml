@@ -10,10 +10,11 @@ matrix:
   include:
     - php: 7.1
     - php: 7.2
+    - php: 7.0
+    - php: 5.6
 
 before_script:
   - composer install
-  - docker pull circlical/phpspec-php7
-
+  
 script:
-  - docker run --rm -v $(pwd):/app circlical/phpspec-php7 run
+  - php vendor/bin/phpspec run
