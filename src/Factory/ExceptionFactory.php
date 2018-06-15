@@ -30,7 +30,7 @@ class ExceptionFactory
 
         $message = null;
 
-        if (in_array('message', $APIResponse)) {
+        if (array_key_exists('message', $APIResponse)) {
             $message = $APIResponse['message'];
         }
 
