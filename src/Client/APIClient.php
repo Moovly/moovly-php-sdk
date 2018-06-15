@@ -198,7 +198,7 @@ class APIClient
             ]
         ];
 
-        return $this->doRestfulCall('POST', self::RESTFUL_ROOT_JOB, null, $options);
+        return $this->doRestfulCall('POST', self::RESTFUL_ROOT_JOB, self::DOMAIN_GENERATOR, null, $options);
     }
 
     /**
