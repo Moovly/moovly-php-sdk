@@ -333,7 +333,7 @@ final class MoovlyService
 
         try {
             $result = JobFactory::createFromAPIResponse(
-                $this->client->createJob($job->getTemplate()->getId(), $values, $options)
+                $this->client->createJob($job->getTemplate()->getId(), $options, $values)
             );
 
             $result
