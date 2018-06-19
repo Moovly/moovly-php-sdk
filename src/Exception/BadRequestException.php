@@ -17,7 +17,7 @@ class BadRequestException extends MoovlyException
         'server: %s'
     ;
 
-    public function __construct(string $reason)
+    public function __construct(?string $reason)
     {
         parent::__construct(sprintf(self::MESSAGE, $reason), self::CODE);
     }
