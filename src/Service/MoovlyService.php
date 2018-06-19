@@ -150,7 +150,7 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        return ObjectFactory::createFromAPIResponse($object['data']);
+        return ObjectFactory::createFromAPIResponse($object);
     }
 
     /**
