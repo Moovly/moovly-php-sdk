@@ -25,7 +25,7 @@ class ObjectFactory
         $assets = AssetFactory::createFromAPIResponse($response['type'], $response['assets']);
 
         $object
-            ->setId($response['id'])
+            ->setId($response['id'] ?? $response['metadata']['id'])
             ->setAssets($assets)
             ->setType($response['type'])
             ->setLabel($response['metadata']['label'])
