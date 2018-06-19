@@ -324,7 +324,9 @@ class APIClient
             ]
         );
 
-        return json_decode($response->getBody()->getContents(), true);
+        $response = json_decode($response->getBody()->getContents(), true);
+        
+        return empty($response) ? $response : $response[0];
     }
 
     /**
