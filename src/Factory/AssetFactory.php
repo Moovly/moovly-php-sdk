@@ -40,6 +40,10 @@ class AssetFactory
     {
         $result = [];
 
+        if (empty($assets)) {
+            return $result;
+        }
+        
         $videos = array_values(array_map(function (array $video) {
             return (new Asset())
                 ->setType(Asset::TYPE_VIDEO)
