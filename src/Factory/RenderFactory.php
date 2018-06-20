@@ -20,6 +20,10 @@ class RenderFactory
         $results = [];
 
         foreach ($renders as $render) {
+            if (is_null($render)) {
+                continue;
+            }
+
             $results[] = (new Render())
                 ->setId($render['id'])
                 ->setState($render['state'])
