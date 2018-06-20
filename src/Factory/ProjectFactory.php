@@ -19,11 +19,14 @@ class ProjectFactory
     {
         $project = new Project();
 
+        $renders = RenderFactory::createFromAPIResponse($response['renders']);
+
         $project
             ->setId($response['id'])
             ->setLabel($response['label'])
             ->setDescription($response['description'])
             ->setThumbnailPath($response['thumb'])
+            ->setRenders($renders)
             ->setArchived($response['archived'])
             ->setPending($response['pending'])
             ->setCreatedAt(new \DateTimeImmutable($response['created_at']))

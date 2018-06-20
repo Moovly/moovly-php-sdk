@@ -20,6 +20,9 @@ class Project
     /** @var string */
     private $thumbnailPath;
 
+    /** @var Render[] */
+    private $renders;
+
     /** @var float */
     private $duration;
 
@@ -130,6 +133,30 @@ class Project
     public function setThumbnailPath(string $thumbnailPath): Project
     {
         $this->thumbnailPath = $thumbnailPath;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Renders
+     *
+     * @return Render[]
+     */
+    public function getRenders(): array
+    {
+        return $this->renders;
+    }
+
+    /**
+     * Sets the Renders
+     *
+     * @param Render[] $renders
+     *
+     * @return Project
+     */
+    public function setRenders(array $renders): Project
+    {
+        $this->renders = $renders;
 
         return $this;
     }
