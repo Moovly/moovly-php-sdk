@@ -30,14 +30,12 @@ class ObjectFactory
             ->setType($response['type'])
             ->setLabel($response['metadata']['label'])
             ->setDescription($response['metadata']['description'])
-            ->setThumbnailPath($response['metadata']['thumb'])
-            ->setTags($response['metadata']['tags'])
-            ->setAlpha($response['metadata']['alpha'])
+            ->setThumbnailPath($response['metadata']['thumb'] ?? '')
+            ->setTags($response['metadata']['tags'] ?? [])
+            ->setAlpha($response['metadata']['alpha'] ?? false)
             ->setStatus($response['status'])
         ;
 
         return $object;
     }
-
-
 }
