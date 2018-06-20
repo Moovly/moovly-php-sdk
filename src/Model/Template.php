@@ -21,6 +21,12 @@ class Template
     /** @var Variable[] */
     private $variables;
 
+    /** @var string|null */
+    private $thumbnail;
+
+    /** @var string|null */
+    private $preview;
+
     /**
      * Returns the Id
      *
@@ -113,6 +119,54 @@ class Template
     public function setVariables(array $variables): Template
     {
         $this->variables = $variables;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Thumbnail
+     *
+     * @return null|string
+     */
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * Sets the Thumbnail
+     *
+     * @param null|string $thumbnail
+     *
+     * @return Template
+     */
+    public function setThumbnail(?string $thumbnail): Template
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Preview
+     *
+     * @return null|string
+     */
+    public function getPreview(): ?string
+    {
+        return $this->preview;
+    }
+
+    /**
+     * Sets the Preview
+     *
+     * @param null|string $preview
+     *
+     * @return Template
+     */
+    public function setPreview(?string $preview): Template
+    {
+        $this->preview = $preview;
 
         return $this;
     }

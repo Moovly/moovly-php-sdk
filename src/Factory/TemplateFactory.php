@@ -32,6 +32,8 @@ class TemplateFactory
             ->setId($response['id'])
             ->setName($response['name'])
             ->setOriginalProjectId($response['original_moov_id'])
+            ->setThumbnail($response['thumb'] ?? null)
+            ->setPreview($response['preview'] ?? null)
             ->setVariables($variables)
         ;
 
