@@ -295,7 +295,7 @@ final class MoovlyService
             'quality'     => '480p',
             'create_moov' => false,
             'auto_render' => true,
-        ], $job->getOptions);
+        ], $job->getOptions());
 
         if (!in_array($options['quality'], $validQualities)) {
             throw new BadRequestException(
