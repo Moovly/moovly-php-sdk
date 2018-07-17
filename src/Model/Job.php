@@ -12,7 +12,7 @@ class Job
     private $id;
 
     /** @var array */
-    private $options;
+    private $options = [];
 
     /** @var Template */
     private $template;

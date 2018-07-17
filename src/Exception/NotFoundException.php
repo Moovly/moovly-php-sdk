@@ -13,7 +13,7 @@ namespace Moovly\SDK\Exception;
 class NotFoundException extends MoovlyException
 {
     const CODE = 400;
-    const MESSAGE = 'The API call you made was against a non-existant endpoint or couldn\'t find the resource.';
+    const MESSAGE = 'The API call you made was against a non-existant endpoint or couldn\'t find the resource. Additional message given: %s';
 
     /**
      * NotFoundException constructor.
