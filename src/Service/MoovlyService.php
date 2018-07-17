@@ -72,7 +72,7 @@ final class MoovlyService
      * @param APIClient $client
      * @param string $token
      */
-    public function __construct(APIClient $client, string $token)
+    public function __construct(APIClient $client, $token)
     {
         $this->client = $client;
         $this->client->setToken($token);
@@ -88,7 +88,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getObject(string $id): MoovlyObject
+    public function getObject($id)
     {
         try {
             $object = ObjectFactory::createFromAPIResponse(
@@ -113,7 +113,7 @@ final class MoovlyService
 
      * @throws MoovlyException
      */
-    public function uploadAsset(\SplFileInfo $file, Library $library = null): MoovlyObject
+    public function uploadAsset(\SplFileInfo $file, Library $library = null)
     {
         $supportedExtensions = array_merge(
             self::SUPPORTED_AUDIO_EXTENSION,
@@ -162,7 +162,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getProject(string $projectId): Project
+    public function getProject($projectId)
     {
         try {
             $project = ProjectFactory::createFromAPIResponse(
@@ -186,7 +186,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getProjects(?string $filter = 'unarchived'): array
+    public function getProjects($filter = 'unarchived')
     {
         if (is_null($filter)) {
             $filter = 'unarchived';
@@ -216,7 +216,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function createTemplate(Project $project): Template
+    public function createTemplate(Project $project)
     {
         try {
             $template = TemplateFactory::createFromAPIResponse(
@@ -240,7 +240,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getTemplate(string $templateId): Template
+    public function getTemplate($templateId)
     {
         try {
             $template = TemplateFactory::createFromAPIResponse($this->client->getTemplate($templateId));
@@ -260,7 +260,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getTemplates(): array
+    public function getTemplates()
     {
         try {
             $response = $this->client->getTemplates();
@@ -288,7 +288,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function createJob(Job $job, array $options = []): Job
+    public function createJob(Job $job, array $options = [])
     {
         $validQualities = ['480p', '720p', '1080p'];
 
@@ -359,7 +359,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getJob(string $jobId): Job
+    public function getJob($jobId)
     {
         try {
             $job = JobFactory::createFromAPIResponse($this->client->getJob($jobId));
@@ -381,7 +381,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getJobsByTemplate(Template $template): array
+    public function getJobsByTemplate(Template $template)
     {
         try {
             $response = $this->client->getJobsByTemplate($template->getId());
@@ -407,7 +407,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getJobsByUser(User $user): array
+    public function getJobsByUser(User $user)
     {
         try {
             $response = $this->client->getJobsByUser($user->getId());
@@ -431,7 +431,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getCurrentUser(): User
+    public function getCurrentUser()
     {
         try {
             $user = UserFactory::createFromAPIResponse($this->client->getUser());
@@ -451,7 +451,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getPersonalLibraryForUser(): Library
+    public function getPersonalLibraryForUser()
     {
         try {
             $library = LibraryFactory::createFromAPIResponse($this->client->getUserPersonalLibrary());
@@ -475,14 +475,16 @@ final class MoovlyService
     private function mergeJobValues(array $preRequestValues, array $postRequestValues)
     {
         $result = array_map(function (Value $postValue) use ($preRequestValues) {
-            /** @var Value $preValue */
-            $preValue = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
+            $preValues = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
                 return $postValue->getExternalId() === $preValue->getExternalId();
             });
 
+            /** @var Value $preValue */
+            $preValue = $preValues[0];
+
             $postValue
-                ->setTemplateVariables($preValue[0]->getTemplateVariables())
-                ->setTitle($preValue[0]->getTitle())
+                ->setTemplateVariables($preValue->getTemplateVariables())
+                ->setTitle($preValue->getTitle())
             ;
 
             return $postValue;

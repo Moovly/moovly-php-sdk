@@ -71,7 +71,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getUser(): array
+    public function getUser()
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_USER, self::DOMAIN_USER);
     }
@@ -84,7 +84,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getUserPersonalLibrary(): array
+    public function getUserPersonalLibrary()
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_PERSONAL_LIBRARY,
@@ -109,7 +109,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getProjects(?string $filter = null): array
+    public function getProjects($filter = null)
     {
         $options = [
             'query' => ['filter' => $filter]
@@ -127,7 +127,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getProject(string $id): array
+    public function getProject($id)
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_API2, $id);
     }
@@ -139,7 +139,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getTemplates(): array
+    public function getTemplates()
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR);
     }
@@ -151,7 +151,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getTemplate(string $id): array
+    public function getTemplate($id)
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR, $id);
     }
@@ -166,7 +166,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function createTemplate(string $projectId): array
+    public function createTemplate($projectId)
     {
         $options = [
             'form_params' => [
@@ -188,7 +188,7 @@ class APIClient
      *
      * @t
      */
-    public function createJob(string $templateId, array $jobOptions, array $values): array
+    public function createJob($templateId, array $jobOptions, array $values)
     {
         $options = [
             'json' => [
@@ -210,7 +210,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getJob(string $id): array
+    public function getJob($id)
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_JOB, self::DOMAIN_GENERATOR, $id);
     }
@@ -224,7 +224,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getJobsByTemplate(string $templateId): array
+    public function getJobsByTemplate($templateId)
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_GET_JOBS_BY_TEMPLATE,
@@ -249,7 +249,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getJobsByUser(string $userId): array
+    public function getJobsByUser($userId)
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_GET_JOBS_BY_USER,
@@ -274,7 +274,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getObject(string $id): array
+    public function getObject($id)
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_OBJECT, self::DOMAIN_API2, $id);
     }
@@ -289,7 +289,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function uploadAsset(\SplFileInfo $file, ?string $libraryId): array
+    public function uploadAsset(\SplFileInfo $file, $libraryId)
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_UPLOAD_ASSET,
@@ -342,7 +342,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function uploadVideo(\SplFileInfo $file, ?string $libraryId): array
+    public function uploadVideo(\SplFileInfo $file, $libraryId)
     {
         $object = $this->getObjectWithSignedUrl($file, $libraryId);
 
@@ -366,7 +366,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    private function getObjectWithSignedUrl(\SplFileInfo $file, ?string $libraryId): array
+    private function getObjectWithSignedUrl(\SplFileInfo $file, $libraryId)
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_UPLOAD_VIDEO,
@@ -400,7 +400,7 @@ class APIClient
      *
      * @return void
      */
-    public function setToken(?string $token): void
+    public function setToken($token)
     {
         $this->token = $token;
     }
@@ -411,7 +411,7 @@ class APIClient
      *
      * @return Client
      */
-    public function getClient(): Client
+    public function getClient()
     {
         return $this->client;
     }
@@ -427,13 +427,8 @@ class APIClient
      *
      * @return array
      */
-    private function doRestfulCall(
-        string $method,
-        string $root,
-        string $domain,
-        ?string $id = null,
-        ?array $options = []
-    ): array {
+    private function doRestfulCall($method, $root, $domain, $id = null, array $options = [])
+    {
         $endpoint = $this->stringEngine->render($root, ['version' => self::DOMAIN_TO_VERSION[$domain]]);
 
         if (!is_null($id)) {

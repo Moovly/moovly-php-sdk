@@ -16,7 +16,7 @@ class ValueFactory
      *
      * @return Value
      */
-    public static function create(string $externalId, string $title, array $templateVariables): Value
+    public static function create($externalId, $title, array $templateVariables)
     {
         return (new Value())
             ->setTitle($title)
@@ -30,7 +30,7 @@ class ValueFactory
      *
      * @return Value
      */
-    public static function createFromAPIResponse(array $response): Value
+    public static function createFromAPIResponse(array $response)
     {
         return (new Value())
             ->setExternalId($response['external_id'])

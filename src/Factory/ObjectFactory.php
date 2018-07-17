@@ -18,21 +18,21 @@ class ObjectFactory
      *
      * @return MoovlyObject
      */
-    public static function createFromAPIResponse(array $response): MoovlyObject
+    public static function createFromAPIResponse(array $response)
     {
         $object = new MoovlyObject();
 
         $assets = AssetFactory::createFromAPIResponse($response['type'], $response['assets']);
 
         $object
-            ->setId($response['id'] ?? $response['metadata']['id'])
+            ->setId(!key_exists('id', $response) ? $response['metadata']['id'] : $response['id'])
             ->setAssets($assets)
             ->setType($response['type'])
             ->setLabel($response['metadata']['label'])
             ->setDescription($response['metadata']['description'])
-            ->setThumbnailPath($response['metadata']['thumb'] ?? '')
-            ->setTags($response['metadata']['tags'] ?? [])
-            ->setAlpha($response['metadata']['alpha'] ?? false)
+            ->setThumbnailPath(!key_exists('thumb', $response['metadata']) ? '' : $response['metadata']['thumb'])
+            ->setTags(!key_exists('tags', $response['metadata']) ? [] : $response['metadata']['tags'])
+            ->setAlpha(!key_exists('alpha', $response['metadata']) ? false : $response['metadata']['alpha'])
             ->setStatus($response['status'])
         ;
 

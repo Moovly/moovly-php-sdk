@@ -40,7 +40,7 @@ class Render
      *
      * @return null|string
      */
-    public function getId() : ?string
+    public function getId()
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class Render
      *
      * @return Render
      */
-    public function setId(?string $id) : Render
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -64,7 +64,7 @@ class Render
      *
      * @return string
      */
-    public function getState() : string
+    public function getState()
     {
         return $this->state;
     }
@@ -76,7 +76,7 @@ class Render
      *
      * @return Render
      */
-    public function setState(string $state) : Render
+    public function setState($state)
     {
         $this->state = $state;
 
@@ -88,7 +88,7 @@ class Render
      *
      * @return null|string
      */
-    public function getUrl() : ?string
+    public function getUrl()
     {
         return $this->url;
     }
@@ -100,7 +100,7 @@ class Render
      *
      * @return Render
      */
-    public function setUrl(?string $url) : Render
+    public function setUrl($url)
     {
         $this->url = $url;
 
@@ -112,7 +112,7 @@ class Render
      *
      * @return null|string
      */
-    public function getQuality() : ?string
+    public function getQuality()
     {
         return $this->quality;
     }
@@ -124,7 +124,7 @@ class Render
      *
      * @return Render
      */
-    public function setQuality(?string $quality) : Render
+    public function setQuality($quality)
     {
         $this->quality = $quality;
 
@@ -136,7 +136,7 @@ class Render
      *
      * @return string
      */
-    public function getType() : string
+    public function getType()
     {
         return $this->type;
     }
@@ -148,7 +148,7 @@ class Render
      *
      * @return Render
      */
-    public function setType(string $type) : Render
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -160,7 +160,7 @@ class Render
      *
      * @return null|string
      */
-    public function getError() : ?string
+    public function getError()
     {
         return $this->error;
     }
@@ -172,7 +172,7 @@ class Render
      *
      * @return Render
      */
-    public function setError(?string $error) : Render
+    public function setError($error)
     {
         $this->error = $error;
 
@@ -184,9 +184,9 @@ class Render
      *
      * @return null|string
      */
-    public function getProjectId() : ?string
+    public function getProjectId()
     {
-        return $this->project_id;
+        return $this->projectId;
     }
 
     /**
@@ -196,9 +196,9 @@ class Render
      *
      * @return Render
      */
-    public function setProjectId(?string $projectId) : Render
+    public function setProjectId($projectId)
     {
-        $this->project_id = $projectId;
+        $this->projectId = $projectId;
 
         return $this;
     }
@@ -208,7 +208,7 @@ class Render
      *
      * @return null|\DateTimeImmutable
      */
-    public function getStartedAt(): \DateTimeImmutable
+    public function getStartedAt()
     {
         return $this->startedAt;
     }
@@ -220,7 +220,7 @@ class Render
      *
      * @return Render
      */
-    public function setStartedAt(?\DateTimeImmutable $startedAt): Render
+    public function setStartedAt(\DateTimeImmutable $startedAt = null)
     {
         $this->startedAt = $startedAt;
 
@@ -232,7 +232,7 @@ class Render
      *
      * @return null|\DateTimeImmutable
      */
-    public function getDateFinished(): \DateTimeImmutable
+    public function getDateFinished()
     {
         return $this->dateFinished;
     }
@@ -244,7 +244,7 @@ class Render
      *
      * @return Render
      */
-    public function setDateFinished(?\DateTimeImmutable $dateFinished): Render
+    public function setDateFinished(\DateTimeImmutable $dateFinished = null)
     {
         $this->dateFinished = $dateFinished;
 

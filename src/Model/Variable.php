@@ -33,7 +33,7 @@ class Variable
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -45,7 +45,7 @@ class Variable
      *
      * @return Variable
      */
-    public function setId(string $id): Variable
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -57,7 +57,7 @@ class Variable
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -69,7 +69,7 @@ class Variable
      *
      * @return Variable
      */
-    public function setName(string $name): Variable
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -81,7 +81,7 @@ class Variable
      *
      * @return int
      */
-    public function getWeight(): int
+    public function getWeight()
     {
         return $this->weight;
     }
@@ -93,7 +93,7 @@ class Variable
      *
      * @return Variable
      */
-    public function setWeight(int $weight): Variable
+    public function setWeight($weight)
     {
         $this->weight = $weight;
 
@@ -105,7 +105,7 @@ class Variable
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -117,7 +117,7 @@ class Variable
      *
      * @return Variable
      */
-    public function setType(string $type): Variable
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -129,7 +129,7 @@ class Variable
      *
      * @return array[]
      */
-    public function getRequirements(): array
+    public function getRequirements()
     {
         return $this->requirements;
     }
@@ -141,7 +141,7 @@ class Variable
      *
      * @return Variable
      */
-    public function setRequirements(array $requirements): Variable
+    public function setRequirements(array $requirements)
     {
         $this->requirements = $requirements;
 

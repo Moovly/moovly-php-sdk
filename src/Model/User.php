@@ -22,7 +22,7 @@ class User
      *
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class User
      *
      * @return User
      */
-    public function setId(int $id): User
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -46,7 +46,7 @@ class User
      *
      * @return string
      */
-    public function getUuid(): string
+    public function getUuid()
     {
         return $this->uuid;
     }
@@ -58,7 +58,7 @@ class User
      *
      * @return User
      */
-    public function setUuid(string $uuid): User
+    public function setUuid($uuid)
     {
         $this->uuid = $uuid;
 
@@ -70,7 +70,7 @@ class User
      *
      * @return bool
      */
-    public function isLocked(): bool
+    public function isLocked()
     {
         return $this->locked;
     }
@@ -82,7 +82,7 @@ class User
      *
      * @return User
      */
-    public function setLocked(bool $locked): User
+    public function setLocked($locked)
     {
         $this->locked = $locked;
 

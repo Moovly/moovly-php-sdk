@@ -19,7 +19,7 @@ class Library
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -31,7 +31,7 @@ class Library
      *
      * @return Library
      */
-    public function setId(string $id): Library
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -43,7 +43,7 @@ class Library
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -55,7 +55,7 @@ class Library
      *
      * @return Library
      */
-    public function setName(string $name): Library
+    public function setName($name)
     {
         $this->name = $name;
 
