@@ -406,7 +406,7 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getJobsByUser(User $user): array
+    public function getJobsByUser(User $user)
     {
         try {
             $response = $this->client->getJobsByUser($user->getId());
