@@ -104,7 +104,7 @@ class Template
      *
      * @return Variable[]
      */
-    public function getVariables(): array
+    public function getVariables()
     {
         return $this->variables;
     }
