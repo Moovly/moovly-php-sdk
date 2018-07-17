@@ -201,7 +201,6 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
         $client->uploadVideo(Argument::type(\SplFileInfo::class), null)->willReturn([
-            'data' => [
                 'id' => 'ABC',
                 'type' => 'video',
                 'assets' => [
@@ -231,9 +230,8 @@ class MoovlyServiceSpec extends ObjectBehavior
                     'alpha' => false,
                 ],
                 'status' => true,
-            ],
-            'url' => 'https://abc.com/g'
-        ]);
+            ]
+        );
 
         $this->beConstructedWith($client, '');
 
@@ -531,7 +529,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $user->getId()->willReturn(50);
 
-        $client->getJobsByUser(Argument::type('string'))->willReturn([
+        $client->getJobsByUser(Argument::type('integer'))->willReturn([
             [
                 'id' => 'abc',
                 'status' => 'started',
