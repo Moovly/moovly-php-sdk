@@ -475,14 +475,16 @@ final class MoovlyService
     private function mergeJobValues(array $preRequestValues, array $postRequestValues)
     {
         $result = array_map(function (Value $postValue) use ($preRequestValues) {
-            /** @var Value $preValue */
-            $preValue = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
+            $preValues = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
                 return $postValue->getExternalId() === $preValue->getExternalId();
             });
 
+            /** @var Value $preValue */
+            $preValue = $preValues[0];
+
             $postValue
-                ->setTemplateVariables($preValue[0]->getTemplateVariables())
-                ->setTitle($preValue[0]->getTitle())
+                ->setTemplateVariables($preValue->getTemplateVariables())
+                ->setTitle($preValue->getTitle())
             ;
 
             return $postValue;
