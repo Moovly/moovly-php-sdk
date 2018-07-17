@@ -4,7 +4,7 @@
     "keywords": ["video", "automation", "moovly"],
     "type": "library",
     "require": {
-        "php": ">=5.6.0",
+        "php": "^5.6.0",
         "guzzlehttp/guzzle": "^6.3",
         "nicmart/string-template": "^0.1.1"
     },
