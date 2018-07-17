@@ -19,7 +19,11 @@ class ProjectFactory
     {
         $project = new Project();
 
-        $renders = RenderFactory::createFromAPIResponse($response['renders']);
+        $renders = [];
+
+        if (key_exists('renders', $response)) {
+            $renders = RenderFactory::createFromAPIResponse($response['renders']);
+        }
 
         $project
             ->setId($response['id'])
