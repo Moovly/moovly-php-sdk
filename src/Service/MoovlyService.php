@@ -282,13 +282,12 @@ final class MoovlyService
      * JobFactory and the ValueFactory to create this.
      *
      * @param Job   $job
-     * @param array $options
      *
      * @return Job
      *
      * @throws MoovlyException
      */
-    public function createJob(Job $job, array $options = []): Job
+    public function createJob(Job $job): Job
     {
         $validQualities = ['480p', '720p', '1080p'];
 
@@ -296,7 +295,7 @@ final class MoovlyService
             'quality'     => '480p',
             'create_moov' => false,
             'auto_render' => true,
-        ], $options);
+        ], $job->getOptions());
 
         if (!in_array($options['quality'], $validQualities)) {
             throw new BadRequestException(
