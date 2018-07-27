@@ -35,6 +35,10 @@ class ExceptionFactory
             $message = $APIResponse['message'];
         }
 
+        if (array_key_exists('error', $APIResponse)) {
+            $message = $APIResponse['error'];
+        }
+
         switch ($response->getStatusCode()) {
             case 400:
                 return new BadRequestException($message);
