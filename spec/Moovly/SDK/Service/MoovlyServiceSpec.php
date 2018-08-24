@@ -200,7 +200,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     public function it_can_upload_a_video(APIClient $client, \SplFileInfo $file)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
-        $client->uploadVideo(Argument::type(\SplFileInfo::class), null)->willReturn([
+        $client->uploadAsset(Argument::type(\SplFileInfo::class), null)->willReturn([
                 'id' => 'ABC',
                 'type' => 'video',
                 'assets' => [

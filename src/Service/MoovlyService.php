@@ -143,7 +143,7 @@ final class MoovlyService
         }
 
         try {
-            $object = $this->client->uploadVideo($file, is_null($library) ? null : $library->getId());
+            $object = $this->client->uploadAsset($file, is_null($library) ? null : $library->getId());
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 

@@ -280,58 +280,8 @@ class APIClient
     }
 
     /**
-     * Uploads an asset which is not a video.
-     *
-     * @param \SplFileInfo $file
-     * @param string|null  $libraryId
-     *
-     * @return array
-     *
-     * @throws ClientException
-     */
-    public function uploadAsset(\SplFileInfo $file, ?string $libraryId): array
-    {
-        $endpoint = $this->stringEngine->render(
-            self::ENDPOINT_UPLOAD_ASSET,
-            ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_API2]]
-        );
-
-        $form = [
-            [
-                'name' =>  'file',
-                'contents' => fopen($file->getPathname(), 'r'),
-            ],
-            [
-                'name' => 'name',
-                'contents' => $file->getBasename('.' . $file->getExtension()),
-            ]
-        ];
-
-        if (!is_null($libraryId)) {
-            $form[] = [
-                'name' => 'library_id',
-                'contents' => $libraryId
-            ];
-        }
-
-        $response = $this->client->post(
-            $endpoint,
-            [
-                'headers' => [
-                    'Authorization' => sprintf('Bearer %s', $this->token),
-                ],
-                'multipart' => $form,
-            ]
-        );
-
-        $response = json_decode($response->getBody()->getContents(), true);
-        
-        return empty($response) ? $response : $response[0];
-    }
-
-    /**
-     * Uploads a video. Keep in mind that when you upload a video, you might not want to do this
-     * synchronously with the HTTP call, depending to your web server timeout settings.
+     * Uploads an asset. Keep in mind that when you upload an asset, you might not want to do this
+     * synchronously with the HTTP call, depending to your web server timeout settings and the size of the file.
      *
      * We suggest using a FaaS platform or creating a Docker image and queue it through AWS Batch.
      *
@@ -342,7 +292,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function uploadVideo(\SplFileInfo $file, ?string $libraryId): array
+    public function uploadAsset(\SplFileInfo $file, $libraryId)
     {
         $object = $this->getObjectWithSignedUrl($file, $libraryId);
 
