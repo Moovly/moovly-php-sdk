@@ -324,7 +324,7 @@ class APIClient
         );
 
         $form = [
-            'filename' => $file->getBasename('.' . $file->getExtension()),
+            'filename' => $file->getFilename(),
         ];
 
         if (!is_null($libraryId)) {
