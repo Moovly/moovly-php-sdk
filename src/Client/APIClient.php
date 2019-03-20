@@ -4,7 +4,6 @@ namespace Moovly\SDK\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Moovly\SDK\Exception\BadRequestException;
 use StringTemplate\Engine;
 
 /**
@@ -27,11 +26,13 @@ class APIClient
     const DOMAIN_USER = 'user';
     const DOMAIN_GENERATOR = 'generator';
     const DOMAIN_API2 = 'api2';
+    const DOMAIN_PROJECT = 'project';
 
     const DOMAIN_TO_VERSION = [
         'user' => 'v1',
         'generator' => 'v1',
         'api2' => 'v1',
+        'project' => 'v1',
     ];
 
     const ENDPOINT_UPLOAD_ASSET = '/api2/{version}/objects/upload';
@@ -41,7 +42,7 @@ class APIClient
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
-    const RESTFUL_ROOT_PROJECT = '/api2/{version}/projects';
+    const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
     const RESTFUL_ROOT_OBJECT = '/api2/{version}/objects';
     const RESTFUL_ROOT_TEMPLATE = '/generator/{version}/templates';
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
@@ -115,7 +116,7 @@ class APIClient
             'query' => ['filter' => $filter]
         ];
 
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_API2, null, $options);
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, null, $options);
     }
 
     /**
@@ -129,7 +130,7 @@ class APIClient
      */
     public function getProject(string $id): array
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_API2, $id);
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id);
     }
 
     /**
