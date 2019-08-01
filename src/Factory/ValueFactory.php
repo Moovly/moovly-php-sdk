@@ -12,16 +12,22 @@ class ValueFactory
     /**
      * @param string $externalId
      * @param string $title
-     * @param array $templateVariables
+     * @param array  $templateVariables
+     * @param array  $notifications
      *
      * @return Value
      */
-    public static function create(string $externalId, string $title, array $templateVariables): Value
-    {
+    public static function create(
+        string $externalId,
+        string $title,
+        array $templateVariables,
+        array $notifications = []
+    ): Value {
         return (new Value())
             ->setTitle($title)
             ->setExternalId($externalId)
             ->setTemplateVariables($templateVariables)
+            ->setNotifications($notifications)
         ;
     }
 
