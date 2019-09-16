@@ -153,18 +153,6 @@ class MoovlyServiceSpec extends ObjectBehavior
         $object->getAssets()->shouldHaveCount(3);
     }
 
-    public function it_cannot_upload_bad_assets(APIClient $client, \SplFileInfo $file)
-    {
-        $client->setToken(Argument::type('string'))->shouldBeCalled();
-
-        $this->beConstructedWith($client, '');
-
-        $file->getFilename()->willReturn('presentation.pdf');
-        $file->getExtension()->willReturn('pdf');
-
-        $this->shouldThrow(MoovlyException::class)->duringUploadAsset($file);
-    }
-
     public function it_can_upload_an_image(APIClient $client, \SplFileInfo $file)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();

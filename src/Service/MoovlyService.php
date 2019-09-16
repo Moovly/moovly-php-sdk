@@ -36,33 +36,6 @@ use Moovly\SDK\Model\Value;
  */
 final class MoovlyService
 {
-    const SUPPORTED_VIDEO_EXTENSIONS = [
-        'mkv',
-        'flv',
-        'wmv',
-        'mp4',
-        'm4v',
-        'mpeg',
-        'avi',
-        'webm',
-    ];
-
-    const SUPPORTED_IMAGE_EXTENSIONS = [
-        'gif',
-        'jpeg',
-        'jpg',
-        'png',
-    ];
-
-    const SUPPORTED_AUDIO_EXTENSION = [
-        'flac',
-        'm4a',
-        'mp3',
-        'wav',
-        'ogg',
-        'wma',
-    ];
-
     /** @var APIClient */
     private $client;
 
@@ -115,33 +88,6 @@ final class MoovlyService
      */
     public function uploadAsset(\SplFileInfo $file, Library $library = null)
     {
-        $supportedExtensions = array_merge(
-            self::SUPPORTED_AUDIO_EXTENSION,
-            self::SUPPORTED_IMAGE_EXTENSIONS,
-            self::SUPPORTED_VIDEO_EXTENSIONS
-        );
-
-        $assetExtensions = array_merge(
-            self::SUPPORTED_AUDIO_EXTENSION,
-            self::SUPPORTED_IMAGE_EXTENSIONS
-        );
-
-        if (!in_array($file->getExtension(), $supportedExtensions)) {
-            throw new BadAssetException($file);
-        }
-
-        if (in_array($file->getExtension(), $assetExtensions)) {
-            try {
-                $object = $this->client->uploadAsset($file, is_null($library) ? null : $library->getId());
-            } catch (ClientException $ce) {
-                $response = $ce->getResponse();
-
-                throw ExceptionFactory::create($response, $ce);
-            }
-
-            return ObjectFactory::createFromAPIResponse($object);
-        }
-
         try {
             $object = $this->client->uploadAsset($file, is_null($library) ? null : $library->getId());
         } catch (ClientException $ce) {
