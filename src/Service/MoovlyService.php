@@ -45,6 +45,7 @@ final class MoovlyService
         'mpeg',
         'avi',
         'webm',
+        'mov'
     ];
 
     const SUPPORTED_IMAGE_EXTENSIONS = [
