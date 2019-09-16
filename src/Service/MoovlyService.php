@@ -36,34 +36,6 @@ use Moovly\SDK\Model\Value;
  */
 final class MoovlyService
 {
-    const SUPPORTED_VIDEO_EXTENSIONS = [
-        'mkv',
-        'flv',
-        'wmv',
-        'mp4',
-        'm4v',
-        'mpeg',
-        'avi',
-        'webm',
-        'mov'
-    ];
-
-    const SUPPORTED_IMAGE_EXTENSIONS = [
-        'gif',
-        'jpeg',
-        'jpg',
-        'png',
-    ];
-
-    const SUPPORTED_AUDIO_EXTENSION = [
-        'flac',
-        'm4a',
-        'mp3',
-        'wav',
-        'ogg',
-        'wma',
-    ];
-
     /** @var APIClient */
     private $client;
 
