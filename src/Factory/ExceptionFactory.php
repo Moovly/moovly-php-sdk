@@ -40,6 +40,7 @@ class ExceptionFactory
 
         switch ($response->getStatusCode()) {
             case 400:
+            case 402:
                 return new BadRequestException($message);
             case 401:
             case 403:
