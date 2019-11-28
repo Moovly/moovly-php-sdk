@@ -295,7 +295,8 @@ class APIClient
      */
     public function uploadAsset(\SplFileInfo $file, $libraryId)
     {
-        $object = $this->getObjectWithSignedUrl($file, $libraryId);
+        $filename = $file->getFilename();
+        $object = $this->getObjectWithSignedUrl($filename, $libraryId);
 
         $endpoint = $object['url'];
 
@@ -303,6 +304,19 @@ class APIClient
             $endpoint,
             ['body' => fopen($file->getPathname(), 'r')]
         );
+
+        return $object['data'];
+    }
+
+    /**
+     * @param string      $filename
+     * @param string|null $libraryId
+     *
+     * @return mixed
+     */
+    public function getUploadUrl(string $filename, ?string $libraryId)
+    {
+        $object = $this->getObjectWithSignedUrl($filename, $libraryId);
 
         return $object['data'];
     }
@@ -317,7 +331,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    private function getObjectWithSignedUrl(\SplFileInfo $file, ?string $libraryId): array
+    private function getObjectWithSignedUrl(string $filename, ?string $libraryId): array
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_UPLOAD_VIDEO,
@@ -325,7 +339,7 @@ class APIClient
         );
 
         $form = [
-            'filename' => $file->getFilename(),
+            'filename' => $filename
         ];
 
         if (!is_null($libraryId)) {
