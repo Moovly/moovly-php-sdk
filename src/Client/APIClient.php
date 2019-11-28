@@ -312,13 +312,13 @@ class APIClient
      * @param string      $filename
      * @param string|null $libraryId
      *
-     * @return mixed
+     * @return string
      */
     public function getUploadUrl(string $filename, ?string $libraryId)
     {
         $object = $this->getObjectWithSignedUrl($filename, $libraryId);
 
-        return $object['data'];
+        return $object['url'];
     }
 
     /**
