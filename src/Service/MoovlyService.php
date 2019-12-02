@@ -100,6 +100,26 @@ final class MoovlyService
     }
 
     /**
+     * Returns the upload url
+     *
+     * @param string  $filename
+     * @param Library $library
+     *
+     * @return array
+     * @throws MoovlyException
+     */
+    public function getUploadUrl($filename, Library $library = null)
+    {
+        try {
+            $object = $this->client->getUploadUrl($filename, is_null($library) ? null : $library->getId());
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+            throw ExceptionFactory::create($response, $ce);
+        }
+        return $object;
+    }
+
+    /**
      * Fetches one project.
      *
      * @param string $projectId

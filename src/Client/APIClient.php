@@ -296,7 +296,8 @@ class APIClient
      */
     public function uploadAsset(\SplFileInfo $file, $libraryId)
     {
-        $object = $this->getObjectWithSignedUrl($file, $libraryId);
+        $filename = $file->getFilename();
+        $object = $this->getObjectWithSignedUrl($filename, $libraryId);
 
         $endpoint = $object['url'];
 
@@ -309,16 +310,26 @@ class APIClient
     }
 
     /**
-     * Creates the Object entity and a signed url from S3 to upload the actual asset to.
-     *
-     * @param \SplFileInfo $file
-     * @param string|null  $libraryId
+     * @param string      $filename
+     * @param string|null $libraryId
      *
      * @return array
-     *
-     * @throws ClientException
      */
-    private function getObjectWithSignedUrl(\SplFileInfo $file, $libraryId)
+    public function getUploadUrl($filename, $libraryId)
+    {
+        $object = $this->getObjectWithSignedUrl($filename, $libraryId);
+        return $object;
+    }
+
+    /**
+     * Creates the Object entity and a signed url from S3 to upload the actual asset to.
+     *
+     * @param string      $filename
+     * @param string|null $libraryId
+     *
+     * @return array
+     */
+    private function getObjectWithSignedUrl($filename, $libraryId)
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_UPLOAD_VIDEO,
@@ -326,7 +337,7 @@ class APIClient
         );
 
         $form = [
-            'filename' => $file->getFilename(),
+            'filename' => $filename,
         ];
 
         if (!is_null($libraryId)) {
