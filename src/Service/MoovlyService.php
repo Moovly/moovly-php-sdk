@@ -118,7 +118,7 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        return ObjectFactory::createFromAPIResponse($object);
+        return $object;
     }
 
     /**
