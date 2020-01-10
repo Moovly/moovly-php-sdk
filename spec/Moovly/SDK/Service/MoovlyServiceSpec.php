@@ -266,27 +266,29 @@ class MoovlyServiceSpec extends ObjectBehavior
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
         $client->getProjects(Argument::type('string'))->willReturn([
-            [
-                'id' => 'ABC',
-                'label' => 'Project #2',
-                'description' => 'A description',
-                'thumb' => 'https://abc.com/g',
-                'archived' => true,
-                'pending' => false,
-                'created_at' => "2017-07-28T08:14:12+00:00",
-                'updated_at' => "2017-07-28T08:37:22+00:00",
-                'created_by' => 50,
-            ],
-            [
-                'id' => 'ABD',
-                'label' => 'Project #3',
-                'description' => 'A description',
-                'thumb' => 'https://abc.com/g',
-                'archived' => true,
-                'pending' => false,
-                'created_at' => "2017-07-28T08:14:12+00:00",
-                'updated_at' => "2017-07-28T08:37:22+00:00",
-                'created_by' => 50,
+            'results' => [
+                [
+                    'id' => 'ABC',
+                    'label' => 'Project #2',
+                    'description' => 'A description',
+                    'thumb' => 'https://abc.com/g',
+                    'archived' => true,
+                    'pending' => false,
+                    'created_at' => "2017-07-28T08:14:12+00:00",
+                    'updated_at' => "2017-07-28T08:37:22+00:00",
+                    'created_by' => 50,
+                ],
+                [
+                    'id' => 'ABD',
+                    'label' => 'Project #3',
+                    'description' => 'A description',
+                    'thumb' => 'https://abc.com/g',
+                    'archived' => true,
+                    'pending' => false,
+                    'created_at' => "2017-07-28T08:14:12+00:00",
+                    'updated_at' => "2017-07-28T08:37:22+00:00",
+                    'created_by' => 50,
+                ]
             ]
         ]);
 

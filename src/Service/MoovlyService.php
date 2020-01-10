@@ -168,7 +168,7 @@ final class MoovlyService
 
         $projects = array_map(function (array $project) {
             return ProjectFactory::createFromAPIResponse($project);
-        }, $response);
+        }, $response['results']);
 
         return $projects;
     }
