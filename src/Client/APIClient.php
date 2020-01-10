@@ -43,7 +43,7 @@ class APIClient
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
-    const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
+    const RESTFUL_ROOT_PROJECT = '/project/{version}/users/me/projects';
     const RESTFUL_ROOT_OBJECT = '/api2/{version}/objects';
     const RESTFUL_ROOT_TEMPLATE = '/generator/{version}/templates';
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
