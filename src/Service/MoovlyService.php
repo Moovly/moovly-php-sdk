@@ -147,19 +147,20 @@ final class MoovlyService
      * Fetches all projects.
      *
      * @param string $filter
+     * @param string[] $expand
      *
      * @return Project[]
      *
      * @throws MoovlyException
      */
-    public function getProjects($filter = 'unarchived')
+    public function getProjects($filter = 'unarchived', $expand = [])
     {
         if (is_null($filter)) {
             $filter = 'unarchived';
         }
 
         try {
-            $response = $this->client->getProjects($filter);
+            $response = $this->client->getProjects($filter, $expand);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 

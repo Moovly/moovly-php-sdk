@@ -107,15 +107,19 @@ class APIClient
      * Fetches all projects the bearer has access to.
      *
      * @param null|string $filter
+     * @param string[] $expand
      *
      * @return array
      *
      * @throws ClientException
      */
-    public function getProjects($filter = null)
+    public function getProjects($filter = null, $expand = [])
     {
         $options = [
-            'query' => ['filter' => $filter]
+            'query' => [
+                'filter' => $filter,
+                'expand' => $expand
+            ]
         ];
 
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECTS, self::DOMAIN_PROJECT, null, $options);
