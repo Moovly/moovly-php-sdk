@@ -265,7 +265,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getProjects(Argument::type('string'))->willReturn([
+        $client->getProjects(Argument::type('string'), Argument::type('array'))->willReturn([
             'results' => [
                 [
                     'id' => 'ABC',
@@ -294,7 +294,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $this->beConstructedWith($client, '');
 
-        $this->getProjects(null)->shouldHaveCount(2);
+        $this->getProjects(null, [])->shouldHaveCount(2);
     }
 
     function it_can_create_a_template(APIClient $client, Project $project)
