@@ -125,17 +125,17 @@ final class MoovlyService
      * Fetches one project.
      *
      * @param string $projectId
-     * @param bool $withRenders
+     * @param array $expand
      *
      * @return Project
      *
      * @throws MoovlyException
      */
-    public function getProject(string $projectId, bool $withRenders = false): Project
+    public function getProject(string $projectId, array $expand = []): Project
     {
         try {
             $project = ProjectFactory::createFromAPIResponse(
-                $this->client->getProject($projectId, $withRenders ? ['renders'] : [])
+                $this->client->getProject($projectId, $expand)
             );
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
