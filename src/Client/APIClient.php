@@ -132,8 +132,11 @@ class APIClient
     public function getProject(string $id, array $expand = []): array
     {
         $options = [
-            'expand' => $expand
+            'query' => [
+                'expand' => $expand
+            ]
         ];
+
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
