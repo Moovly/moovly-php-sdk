@@ -129,9 +129,12 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getProject(string $id): array
+    public function getProject(string $id, array $expand = []): array
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id);
+        $options = [
+            'expand' => $expand
+        ];
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
     /**
