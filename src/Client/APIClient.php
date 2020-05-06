@@ -129,14 +129,20 @@ class APIClient
      * Fetches one project.
      *
      * @param string $id
+     * @param array $expand
      *
      * @return array
      *
      * @throws ClientException
      */
-    public function getProject($id)
+    public function getProject($id, $expand = [])
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id);
+        $options = [
+            'query' => [
+                'expand' => $expand
+            ]
+        ];
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
     /**

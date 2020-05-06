@@ -128,11 +128,11 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getProject($projectId)
+    public function getProject($projectId, $expand = [])
     {
         try {
             $project = ProjectFactory::createFromAPIResponse(
-                $this->client->getProject($projectId)
+                $this->client->getProject($projectId, $expand)
             );
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
@@ -305,8 +305,7 @@ final class MoovlyService
             $result
                 ->setTemplate($job->getTemplate())
                 ->setOptions($job->getOptions())
-                ->setValues($this->mergeJobValues($job->getValues(), $result->getValues()))
-            ;
+                ->setValues($this->mergeJobValues($job->getValues(), $result->getValues()));
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 
@@ -450,8 +449,7 @@ final class MoovlyService
 
             $postValue
                 ->setTemplateVariables($preValue->getTemplateVariables())
-                ->setTitle($preValue->getTitle())
-            ;
+                ->setTitle($preValue->getTitle());
 
             return $postValue;
         }, $postRequestValues);
