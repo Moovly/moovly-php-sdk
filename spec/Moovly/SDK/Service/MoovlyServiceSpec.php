@@ -188,7 +188,8 @@ class MoovlyServiceSpec extends ObjectBehavior
     public function it_can_upload_a_video(APIClient $client, \SplFileInfo $file)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
-        $client->uploadAsset(Argument::type(\SplFileInfo::class), null)->willReturn([
+        $client->uploadAsset(Argument::type(\SplFileInfo::class), null)->willReturn(
+            [
                 'id' => 'ABC',
                 'type' => 'video',
                 'assets' => [
@@ -233,7 +234,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getProject(Argument::type('string'))->willReturn([
+        $client->getProject(Argument::type('string'), Argument::type('array'))->willReturn([
             'id' => 'ABC',
             'label' => 'Project #2',
             'description' => 'A description',
@@ -600,9 +601,9 @@ class MoovlyServiceSpec extends ObjectBehavior
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
         $client->getUser()->willReturn([
-           'id' => 50,
-           'locked' => false,
-           'uuid' => 'ABC'
+            'id' => 50,
+            'locked' => false,
+            'uuid' => 'ABC'
         ]);
 
         $this->beConstructedWith($client, '');
