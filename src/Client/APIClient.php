@@ -41,6 +41,7 @@ class APIClient
     const ENDPOINT_PERSONAL_LIBRARY = '/api2/{version}/user/me/personal-library';
     const ENDPOINT_GET_JOBS_BY_USER = '/generator/{version}/users/{templateId}/jobs';
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
+    const ENDPOINT_GET_CONTRACTS_BY_USER = '/generator/{version}/users/me/contracts';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
     const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
@@ -231,6 +232,22 @@ class APIClient
     public function getJob($id)
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_JOB, self::DOMAIN_GENERATOR, $id);
+    }
+
+    public function getUserContracts()
+    {
+        $endpoint = $this->stringEngine->render(
+            self::ENDPOINT_GET_CONTRACTS_BY_USER,
+            ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
+        );
+
+        $response = $this->client->get($endpoint, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s', $this->token)
+            ]
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**

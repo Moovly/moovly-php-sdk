@@ -429,6 +429,19 @@ final class MoovlyService
         return $library;
     }
 
+    public function getRemainingCredits()
+    {
+        try {
+            $contracts = $this->client->getUserContracts();
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return $contracts['state'];
+    }
+
     /**
      * Makes sure the API of newly created jobs is as complete for values as possible.
      *
