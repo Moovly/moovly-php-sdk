@@ -37,7 +37,8 @@ $project = $service->getProject('project-id');
 $projects = $service->getProjects();
 
 /** @var Template[] $template */
-$templates = $service->getTemplates();
+$filters = [];
+$templates = $service->getTemplates($filters);
 
 /** @var Template $template */
 $template = $service->createTemplate($project);

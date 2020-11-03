@@ -400,7 +400,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getTemplates()->willReturn([
+        $client->getTemplates([])->willReturn([
             [
                 'id' => 'ABC',
                 'name' => 'Template 1',

@@ -227,10 +227,10 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getTemplates()
+    public function getTemplates($filters = [])
     {
         try {
-            $response = $this->client->getTemplates();
+            $response = $this->client->getTemplates($filters);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 

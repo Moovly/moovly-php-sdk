@@ -152,9 +152,14 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getTemplates()
+    public function getTemplates($filters)
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR);
+        $options = [
+            'query' => [
+                'filters' => $filters
+            ]
+        ];
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR, null, $options);
     }
 
     /**
