@@ -12,6 +12,7 @@ use Moovly\SDK\Factory\JobFactory;
 use Moovly\SDK\Factory\LibraryFactory;
 use Moovly\SDK\Factory\ObjectFactory;
 use Moovly\SDK\Factory\ProjectFactory;
+use Moovly\SDK\Factory\RenderFactory;
 use Moovly\SDK\Factory\TemplateFactory;
 use Moovly\SDK\Factory\UserFactory;
 use Moovly\SDK\Model\Job;
@@ -440,6 +441,19 @@ final class MoovlyService
         }
 
         return $contracts['state'];
+    }
+
+    public function getRendersForUser($externalType)
+    {
+        try {
+            $response = $this->client->getRendersForUser($externalType);
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return RenderFactory::createFromAPIResponse($response);
     }
 
     /**

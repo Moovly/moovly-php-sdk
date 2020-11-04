@@ -42,6 +42,7 @@ class APIClient
     const ENDPOINT_GET_JOBS_BY_USER = '/generator/{version}/users/{templateId}/jobs';
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
     const ENDPOINT_GET_CONTRACTS_BY_USER = '/generator/{version}/users/me/contracts';
+    const ENDPOINT_GET_RENDERS_BY_USER = '/render/{version}/renders';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
     const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
@@ -124,6 +125,18 @@ class APIClient
         ];
 
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECTS, self::DOMAIN_PROJECT, null, $options);
+    }
+
+    public function getRendersForUser($externalType)
+    {
+        $options = [
+            'query' => [
+                'external_type' => $externalType,
+            ]
+        ];
+
+        return $this->doRestfulCall('GET', self::ENDPOINT_GET_RENDERS_BY_USER, self::DOMAIN_PROJECT, null, $options);
+
     }
 
     /**
