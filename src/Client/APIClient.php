@@ -34,6 +34,7 @@ class APIClient
         'generator' => 'v1',
         'api2' => 'v1',
         'project' => 'v1',
+        'render' => 'v1',
     ];
 
     const ENDPOINT_UPLOAD_ASSET = '/api2/{version}/objects/upload';
