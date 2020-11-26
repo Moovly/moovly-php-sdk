@@ -21,5 +21,8 @@
         "psr-4": {
             "Moovly\\SDK\\": "src/"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
