@@ -20,7 +20,7 @@ class Job
     /** @var Value[] */
     private $values;
 
-    /** @var string  */
+    /** @var string */
     private $status = 'unsent';
 
     /**
@@ -43,6 +43,7 @@ class Job
     public function setId(string $id): Job
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -66,6 +67,7 @@ class Job
     public function setOptions(array $options): Job
     {
         $this->options = $options;
+
         return $this;
     }
 
@@ -114,6 +116,7 @@ class Job
     public function setValues(array $values): Job
     {
         $this->values = $values;
+
         return $this;
     }
 

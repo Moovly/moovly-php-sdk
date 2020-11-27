@@ -4,7 +4,6 @@ namespace Moovly\SDK\Service;
 
 use GuzzleHttp\Exception\ClientException;
 use Moovly\SDK\Client\APIClient;
-use Moovly\SDK\Exception\BadAssetException;
 use Moovly\SDK\Exception\BadRequestException;
 use Moovly\SDK\Exception\MoovlyException;
 use Moovly\SDK\Factory\ExceptionFactory;
@@ -260,7 +259,7 @@ final class MoovlyService
         $validQualities = ['480p', '720p', '1080p'];
 
         $options = array_merge([
-            'quality'     => '480p',
+            'quality' => '480p',
             'create_moov' => false,
             'auto_render' => true,
         ], $job->getOptions());
@@ -293,7 +292,7 @@ final class MoovlyService
         $values = array_map(function (Value $value) {
             return [
                 'external_id' => $value->getExternalId(),
-                'title'       => $value->getTitle(),
+                'title' => $value->getTitle(),
                 'template_variables' => $value->getTemplateVariables()
             ];
         }, $job->getValues());

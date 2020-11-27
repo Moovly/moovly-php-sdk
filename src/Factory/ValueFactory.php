@@ -1,6 +1,7 @@
 <?php
 
 namespace Moovly\SDK\Factory;
+
 use Moovly\SDK\Model\Value;
 
 /**

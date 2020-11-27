@@ -48,10 +48,10 @@ class APIClient
     const RESTFUL_ROOT_TEMPLATE = '/generator/{version}/templates';
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
 
-    /** @var Engine  */
+    /** @var Engine */
     private $stringEngine;
 
-    /** @var Client  */
+    /** @var Client */
     private $client;
 
     /** @var string */

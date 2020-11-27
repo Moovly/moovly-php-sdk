@@ -11,5 +11,4 @@ namespace Moovly\SDK\Exception;
  */
 class MoovlyException extends \Exception
 {
-
 }

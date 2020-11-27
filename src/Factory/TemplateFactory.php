@@ -25,7 +25,7 @@ class TemplateFactory
         }, $response['variables']);
 
         uasort($variables, function (Variable $current, Variable $next) {
-           return $next->getWeight() <=> $current->getWeight();
+            return $next->getWeight() <=> $current->getWeight();
         });
 
         $template

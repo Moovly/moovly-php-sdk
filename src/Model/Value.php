@@ -17,7 +17,7 @@ class Value
     /** @var array */
     private $templateVariables;
 
-    /** @var string  */
+    /** @var string */
     private $status = 'unsent';
 
     /** @var null|string */
