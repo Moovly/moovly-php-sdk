@@ -484,6 +484,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $template->getId()->willReturn('VALUE');
         $job->getOptions()->willReturn([]);
+        $job->getNotifications()->willReturn([]);
 
         $job->getValues()->willReturn([
             $value
