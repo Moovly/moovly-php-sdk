@@ -3,7 +3,6 @@
 namespace Moovly\SDK\Factory;
 
 use Moovly\SDK\Model\Notification;
-use Moovly\SDK\Model\Value;
 
 /**
  * Class NotificationFactory
