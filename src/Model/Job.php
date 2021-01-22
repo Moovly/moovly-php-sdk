@@ -21,7 +21,7 @@ class Job
     private $values;
 
     /** @var Notification[] */
-    private $notifications;
+    private $notifications = [];
 
     /** @var string */
     private $status = 'unsent';
