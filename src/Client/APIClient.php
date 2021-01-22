@@ -221,7 +221,7 @@ class APIClient
      * @return array
      * @t
      */
-    public function createJob(string $templateId, array $jobOptions, array $values, array $notifications)
+    public function createJob($templateId, $jobOptions, $values, $notifications)
     {
         $options = [
             'json' => [

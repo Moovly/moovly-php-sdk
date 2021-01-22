@@ -181,7 +181,7 @@ class Job
      *
      * @return Job
      */
-    public function setNotifications(array $notifications)
+    public function setNotifications($notifications)
     {
         $this->notifications = $notifications;
 

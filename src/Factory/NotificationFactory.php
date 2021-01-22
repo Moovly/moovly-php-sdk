@@ -18,8 +18,8 @@ class NotificationFactory
      * @return Notification
      */
     public static function create(
-        string $type,
-        array $payload = []
+        $type,
+        $payload = []
     ) {
         return (new Notification())
             ->setType($type)
