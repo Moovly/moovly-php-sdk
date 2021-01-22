@@ -20,6 +20,9 @@ class Job
     /** @var Value[] */
     private $values;
 
+    /** @var Notification[] */
+    private $notifications;
+
     /** @var string */
     private $status = 'unsent';
 
@@ -164,6 +167,26 @@ class Job
     public function setStatus(string $status): Job
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Notification[]
+     */
+    public function getNotifications(): array
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param Notification[] $notifications
+     *
+     * @return Job
+     */
+    public function setNotifications(array $notifications): Job
+    {
+        $this->notifications = $notifications;
 
         return $this;
     }
