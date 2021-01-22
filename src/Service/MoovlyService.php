@@ -18,6 +18,7 @@ use Moovly\SDK\Factory\UserFactory;
 use Moovly\SDK\Model\Job;
 use Moovly\SDK\Model\Library;
 use Moovly\SDK\Model\MoovlyObject;
+use Moovly\SDK\Model\Notification;
 use Moovly\SDK\Model\Project;
 use Moovly\SDK\Model\Template;
 use Moovly\SDK\Model\User;
@@ -298,9 +299,16 @@ final class MoovlyService
             ];
         }, $job->getValues());
 
+        $notifications = array_map(function (Notification $value) {
+            return [
+                'type' => $value->getType(),
+                'payload' => $value->getPayload(),
+            ];
+        }, $job->getNotifications());
+
         try {
             $result = JobFactory::createFromAPIResponse(
-                $this->client->createJob($job->getTemplate()->getId(), $options, $values)
+                $this->client->createJob($job->getTemplate()->getId(), $options, $values, $notifications)
             );
 
             $result

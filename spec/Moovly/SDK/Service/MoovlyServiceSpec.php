@@ -488,6 +488,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $template->getId()->willReturn('VALUE');
         $job->getOptions()->willReturn([]);
+        $job->getNotifications()->willReturn([]);
 
         $job->getValues()->willReturn([
             $value
@@ -496,7 +497,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $job->getId()->willReturn(null);
         $job->getTemplate()->willReturn($template);
 
-        $client->createJob(Argument::type('string'), Argument::type('array'), Argument::type('array'))->willReturn([
+        $client->createJob(Argument::type('string'), Argument::type('array'), Argument::type('array'), Argument::type('array'))->willReturn([
             'id' => 'abc',
             'status' => 'started',
             'videos' => [
