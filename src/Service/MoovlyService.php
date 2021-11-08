@@ -11,6 +11,7 @@ use Moovly\SDK\Factory\JobFactory;
 use Moovly\SDK\Factory\LibraryFactory;
 use Moovly\SDK\Factory\ObjectFactory;
 use Moovly\SDK\Factory\ProjectFactory;
+use Moovly\SDK\Factory\RenderFactory;
 use Moovly\SDK\Factory\TemplateFactory;
 use Moovly\SDK\Factory\UserFactory;
 use Moovly\SDK\Model\Job;
@@ -130,11 +131,11 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getProject(string $projectId): Project
+    public function getProject(string $projectId, array $expand = []): Project
     {
         try {
             $project = ProjectFactory::createFromAPIResponse(
-                $this->client->getProject($projectId)
+                $this->client->getProject($projectId, $expand)
             );
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
@@ -149,19 +150,20 @@ final class MoovlyService
      * Fetches all projects.
      *
      * @param string $filter
+     * @param string[] $expand
      *
      * @return Project[]
      *
      * @throws MoovlyException
      */
-    public function getProjects(?string $filter = 'unarchived'): array
+    public function getProjects(?string $filter = 'unarchived', array $expand = []): array
     {
         if (is_null($filter)) {
             $filter = 'unarchived';
         }
 
         try {
-            $response = $this->client->getProjects($filter);
+            $response = $this->client->getProjects($filter, $expand);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 
@@ -170,7 +172,7 @@ final class MoovlyService
 
         $projects = array_map(function (array $project) {
             return ProjectFactory::createFromAPIResponse($project);
-        }, $response);
+        }, $response['results']);
 
         return $projects;
     }
@@ -228,10 +230,10 @@ final class MoovlyService
      *
      * @throws MoovlyException
      */
-    public function getTemplates(): array
+    public function getTemplates(array $filters = []): array
     {
         try {
-            $response = $this->client->getTemplates();
+            $response = $this->client->getTemplates($filters);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 
@@ -313,8 +315,7 @@ final class MoovlyService
             $result
                 ->setTemplate($job->getTemplate())
                 ->setOptions($job->getOptions())
-                ->setValues($this->mergeJobValues($job->getValues(), $result->getValues()))
-            ;
+                ->setValues($this->mergeJobValues($job->getValues(), $result->getValues()));
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 
@@ -438,6 +439,32 @@ final class MoovlyService
         return $library;
     }
 
+    public function getRemainingCredits()
+    {
+        try {
+            $contracts = $this->client->getUserContracts();
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return $contracts['state'];
+    }
+
+    public function getRendersForUser($externalType)
+    {
+        try {
+            $response = $this->client->getRendersForUser($externalType);
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return RenderFactory::createFromAPIResponse($response);
+    }
+
     /**
      * Makes sure the API of newly created jobs is as complete for values as possible.
      *
@@ -449,16 +476,14 @@ final class MoovlyService
     private function mergeJobValues(array $preRequestValues, array $postRequestValues)
     {
         $result = array_map(function (Value $postValue) use ($preRequestValues) {
-            $preValues = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
+            /** @var Value $preValue */
+            $preValue = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
                 return $postValue->getExternalId() === $preValue->getExternalId();
             });
 
-            /** @var Value $preValue */
-            $preValue = $preValues[0];
-
             $postValue
-                ->setTemplateVariables($preValue->getTemplateVariables())
-                ->setTitle($preValue->getTitle())
+                ->setTemplateVariables($preValue[0]->getTemplateVariables())
+                ->setTitle($preValue[0]->getTitle())
             ;
 
             return $postValue;

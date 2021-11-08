@@ -23,7 +23,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
-
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 

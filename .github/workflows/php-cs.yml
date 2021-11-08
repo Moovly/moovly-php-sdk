@@ -15,5 +15,5 @@ jobs:
       - name: Run PHP CS Checker
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
-          args: --config=.php_cs.dist --allow-risky=yes --diff --dry-run
+          args: --allow-risky=yes --diff --dry-run
 

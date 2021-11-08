@@ -232,7 +232,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getProject(Argument::type('string'))->willReturn([
+        $client->getProject(Argument::type('string'), Argument::type('array'))->willReturn([
             'id' => 'ABC',
             'label' => 'Project #2',
             'description' => 'A description',
@@ -264,34 +264,36 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getProjects(Argument::type('string'))->willReturn([
-            [
-                'id' => 'ABC',
-                'label' => 'Project #2',
-                'description' => 'A description',
-                'thumb' => 'https://abc.com/g',
-                'archived' => true,
-                'pending' => false,
-                'created_at' => "2017-07-28T08:14:12+00:00",
-                'updated_at' => "2017-07-28T08:37:22+00:00",
-                'created_by' => 50,
-            ],
-            [
-                'id' => 'ABD',
-                'label' => 'Project #3',
-                'description' => 'A description',
-                'thumb' => 'https://abc.com/g',
-                'archived' => true,
-                'pending' => false,
-                'created_at' => "2017-07-28T08:14:12+00:00",
-                'updated_at' => "2017-07-28T08:37:22+00:00",
-                'created_by' => 50,
+        $client->getProjects(Argument::type('string'), Argument::type('array'))->willReturn([
+            'results' => [
+                [
+                    'id' => 'ABC',
+                    'label' => 'Project #2',
+                    'description' => 'A description',
+                    'thumb' => 'https://abc.com/g',
+                    'archived' => true,
+                    'pending' => false,
+                    'created_at' => "2017-07-28T08:14:12+00:00",
+                    'updated_at' => "2017-07-28T08:37:22+00:00",
+                    'created_by' => 50,
+                ],
+                [
+                    'id' => 'ABD',
+                    'label' => 'Project #3',
+                    'description' => 'A description',
+                    'thumb' => 'https://abc.com/g',
+                    'archived' => true,
+                    'pending' => false,
+                    'created_at' => "2017-07-28T08:14:12+00:00",
+                    'updated_at' => "2017-07-28T08:37:22+00:00",
+                    'created_by' => 50,
+                ]
             ]
         ]);
 
         $this->beConstructedWith($client, '');
 
-        $this->getProjects(null)->shouldHaveCount(2);
+        $this->getProjects(null, [])->shouldHaveCount(2);
     }
 
     public function it_can_create_a_template(APIClient $client, Project $project)
@@ -396,7 +398,7 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getTemplates()->willReturn([
+        $client->getTemplates([])->willReturn([
             [
                 'id' => 'ABC',
                 'name' => 'Template 1',
@@ -513,7 +515,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $this->beConstructedWith($client, '');
 
-        $this->createJob($job, [])->shouldBeAnInstanceOf(Job::class);
+        $this->createJob($job)->shouldBeAnInstanceOf(Job::class);
     }
 
     public function it_can_get_jobs_by_user(APIClient $client, User $user)
@@ -603,9 +605,9 @@ class MoovlyServiceSpec extends ObjectBehavior
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
         $client->getUser()->willReturn([
-           'id' => 50,
-           'locked' => false,
-           'uuid' => 'ABC'
+            'id' => 50,
+            'locked' => false,
+            'uuid' => 'ABC'
         ]);
 
         $this->beConstructedWith($client, '');

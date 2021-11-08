@@ -40,6 +40,8 @@ class APIClient
     const ENDPOINT_PERSONAL_LIBRARY = '/api2/{version}/user/me/personal-library';
     const ENDPOINT_GET_JOBS_BY_USER = '/generator/{version}/users/{templateId}/jobs';
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
+    const ENDPOINT_GET_CONTRACTS_BY_USER = '/generator/{version}/users/me/contracts';
+    const ENDPOINT_GET_RENDERS_BY_USER = '/render/{version}/renders';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
     const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
@@ -105,33 +107,54 @@ class APIClient
     /**
      * Fetches all projects the bearer has access to.
      *
-     * @param null|string $filter
+     * @param string|null $filter
+     * @param string[]    $expand
      *
      * @return array
-     *
      * @throws ClientException
      */
-    public function getProjects(?string $filter = null): array
+    public function getProjects(?string $filter = null, array $expand = []): array
     {
         $options = [
-            'query' => ['filter' => $filter]
+            'query' => [
+                'filter' => $filter,
+                'expand' => $expand
+            ]
         ];
 
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECTS, self::DOMAIN_PROJECT, null, $options);
+    }
+
+    public function getRendersForUser(string $externalType): array
+    {
+        $options = [
+            'query' => [
+                'external_type' => $externalType,
+            ]
+        ];
+
+        return $this->doRestfulCall('GET', self::ENDPOINT_GET_RENDERS_BY_USER, self::DOMAIN_PROJECT, null, $options);
     }
 
     /**
      * Fetches one project.
      *
      * @param string $id
+     * @param array $expand
      *
      * @return array
      *
      * @throws ClientException
      */
-    public function getProject(string $id): array
+    public function getProject(string $id, array $expand = []): array
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id);
+        $options = [
+            'query' => [
+                'expand' => $expand
+            ]
+        ];
+
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
     /**
@@ -141,9 +164,15 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function getTemplates(): array
+    public function getTemplates(array $filters): array
     {
-        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR);
+        $options = [
+            'query' => [
+                'filters' => $filters
+            ]
+        ];
+
+        return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR, null, $options);
     }
 
     /**
@@ -216,6 +245,22 @@ class APIClient
     public function getJob(string $id): array
     {
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_JOB, self::DOMAIN_GENERATOR, $id);
+    }
+
+    public function getUserContracts()
+    {
+        $endpoint = $this->stringEngine->render(
+            self::ENDPOINT_GET_CONTRACTS_BY_USER,
+            ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
+        );
+
+        $response = $this->client->get($endpoint, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s', $this->token)
+            ]
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -295,7 +340,7 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function uploadAsset(\SplFileInfo $file, $libraryId)
+    public function uploadAsset(\SplFileInfo $file, ?string $libraryId): array
     {
         $filename = $file->getFilename();
         $object = $this->getObjectWithSignedUrl($filename, $libraryId);
@@ -316,22 +361,18 @@ class APIClient
      *
      * @return array
      */
-    public function getUploadUrl(string $filename, ?string $libraryId)
+    public function getUploadUrl(string $filename, ?string $libraryId): array
     {
-        $object = $this->getObjectWithSignedUrl($filename, $libraryId);
-
-        return $object;
+        return $this->getObjectWithSignedUrl($filename, $libraryId);
     }
 
     /**
      * Creates the Object entity and a signed url from S3 to upload the actual asset to.
      *
-     * @param \SplFileInfo $file
-     * @param string|null  $libraryId
+     * @param string      $filename
+     * @param string|null $libraryId
      *
      * @return array
-     *
-     * @throws ClientException
      */
     private function getObjectWithSignedUrl(string $filename, ?string $libraryId): array
     {

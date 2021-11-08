@@ -126,7 +126,7 @@ class Template
     /**
      * Returns the Thumbnail
      *
-     * @return null|string
+     * @return string|null
      */
     public function getThumbnail(): ?string
     {
@@ -136,7 +136,7 @@ class Template
     /**
      * Sets the Thumbnail
      *
-     * @param null|string $thumbnail
+     * @param string|null $thumbnail
      *
      * @return Template
      */
@@ -150,7 +150,7 @@ class Template
     /**
      * Returns the Preview
      *
-     * @return null|string
+     * @return string|null
      */
     public function getPreview(): ?string
     {
@@ -160,7 +160,7 @@ class Template
     /**
      * Sets the Preview
      *
-     * @param null|string $preview
+     * @param string|null $preview
      *
      * @return Template
      */
