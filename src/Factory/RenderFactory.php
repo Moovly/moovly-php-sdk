@@ -33,7 +33,7 @@ class RenderFactory
                 ->setUrl($render['video_url'])
                 ->setError($render['error'])
                 ->setQuality($render['quality'])
-                ->setType($render['type'])
+                ->setType($render['external_type'])
                 ->setProjectId($render['external_id']);
         }
 
