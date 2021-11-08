@@ -33,7 +33,6 @@ class APIClient
         'generator' => 'v1',
         'api2' => 'v1',
         'project' => 'v1',
-        'render' => 'v1'
     ];
 
     const ENDPOINT_UPLOAD_ASSET = '/api2/{version}/objects/upload';
@@ -108,14 +107,13 @@ class APIClient
     /**
      * Fetches all projects the bearer has access to.
      *
-     * @param null|string $filter
-     * @param string[] $expand
+     * @param string|null $filter
+     * @param string[]    $expand
      *
      * @return array
-     *
      * @throws ClientException
      */
-    public function getProjects($filter = null, $expand = []): array
+    public function getProjects(?string $filter = null, array $expand = []): array
     {
         $options = [
             'query' => [

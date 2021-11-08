@@ -21,10 +21,10 @@ class Template
     /** @var Variable[] */
     private $variables;
 
-    /** @var string */
+    /** @var string|null */
     private $thumbnail;
 
-    /** @var string */
+    /** @var string|null */
     private $preview;
 
     /**
@@ -104,7 +104,7 @@ class Template
      *
      * @return Variable[]
      */
-    public function getVariables()
+    public function getVariables(): array
     {
         return $this->variables;
     }
@@ -126,7 +126,7 @@ class Template
     /**
      * Returns the Thumbnail
      *
-     * @return string
+     * @return string|null
      */
     public function getThumbnail(): ?string
     {
@@ -136,7 +136,7 @@ class Template
     /**
      * Sets the Thumbnail
      *
-     * @param string $thumbnail
+     * @param string|null $thumbnail
      *
      * @return Template
      */
@@ -150,7 +150,7 @@ class Template
     /**
      * Returns the Preview
      *
-     * @return string
+     * @return string|null
      */
     public function getPreview(): ?string
     {
@@ -160,7 +160,7 @@ class Template
     /**
      * Sets the Preview
      *
-     * @param string $preview
+     * @param string|null $preview
      *
      * @return Template
      */
