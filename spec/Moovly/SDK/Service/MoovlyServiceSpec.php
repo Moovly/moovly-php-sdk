@@ -524,7 +524,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $user->getId()->willReturn(50);
 
-        $client->getJobsByUser(Argument::type('integer'))->willReturn([
+        $client->getJobsByUser(Argument::type('string'))->willReturn([
             [
                 'id' => 'abc',
                 'status' => 'started',
