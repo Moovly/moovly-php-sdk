@@ -17,7 +17,7 @@ class Notification
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -27,7 +27,7 @@ class Notification
      *
      * @return Notification
      */
-    public function setType($type)
+    public function setType(string $type): Notification
     {
         $this->type = $type;
 
@@ -37,7 +37,7 @@ class Notification
     /**
      * @return array
      */
-    public function getPayload()
+    public function getPayload(): array
     {
         return $this->payload;
     }
@@ -47,7 +47,7 @@ class Notification
      *
      * @return Notification
      */
-    public function setPayload($payload)
+    public function setPayload(array $payload): Notification
     {
         $this->payload = $payload;
 

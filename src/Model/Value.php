@@ -17,7 +17,7 @@ class Value
     /** @var array */
     private $templateVariables;
 
-    /** @var string  */
+    /** @var string */
     private $status = 'unsent';
 
     /** @var null|string */
@@ -25,6 +25,9 @@ class Value
 
     /** @var null|string */
     private $error = null;
+
+    /** @var array */
+    private $notifications = [];
 
     /**
      * Returns the ExternalId. The external id is an user-given id so they can track the value (read video render)
@@ -179,6 +182,26 @@ class Value
     public function setError($error)
     {
         $this->error = $error;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNotifications(): array
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param array $notifications
+     *
+     * @return Value
+     */
+    public function setNotifications(array $notifications): Value
+    {
+        $this->notifications = $notifications;
 
         return $this;
     }

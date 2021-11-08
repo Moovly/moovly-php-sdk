@@ -2,7 +2,6 @@
 
 namespace Moovly\SDK\Factory;
 
-use Moovly\SDK\Model\Asset;
 use Moovly\SDK\Model\MoovlyObject;
 
 /**

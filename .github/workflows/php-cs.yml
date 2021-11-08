@@ -1,0 +1,19 @@
+name: Check styling
+
+on: [push]
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Run PHP CS Checker
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --allow-risky=yes --diff --dry-run
+

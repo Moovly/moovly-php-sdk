@@ -19,7 +19,7 @@ class AssetFactory
      */
     public static function createFromAPIResponse($objectType, array $assets)
     {
-        switch($objectType) {
+        switch ($objectType) {
             case MoovlyObject::TYPE_VIDEO:
                 return self::createAssetsForVideo($assets);
             case MoovlyObject::TYPE_SOUND:

@@ -4,7 +4,6 @@ namespace Moovly\SDK\Service;
 
 use GuzzleHttp\Exception\ClientException;
 use Moovly\SDK\Client\APIClient;
-use Moovly\SDK\Exception\BadAssetException;
 use Moovly\SDK\Exception\BadRequestException;
 use Moovly\SDK\Exception\MoovlyException;
 use Moovly\SDK\Factory\ExceptionFactory;
@@ -107,17 +106,19 @@ final class MoovlyService
      * @param string  $filename
      * @param Library $library
      *
-     * @return array
+     * @return MoovlyObject
      * @throws MoovlyException
      */
-    public function getUploadUrl($filename, Library $library = null)
+    public function getUploadUrl(string $filename, Library $library = null): MoovlyObject
     {
         try {
             $object = $this->client->getUploadUrl($filename, is_null($library) ? null : $library->getId());
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
+
             throw ExceptionFactory::create($response, $ce);
         }
+
         return $object;
     }
 
@@ -261,7 +262,7 @@ final class MoovlyService
         $validQualities = ['480p', '720p', '1080p'];
 
         $options = array_merge([
-            'quality'     => '480p',
+            'quality' => '480p',
             'create_moov' => false,
             'auto_render' => true,
         ], $job->getOptions());
@@ -294,7 +295,7 @@ final class MoovlyService
         $values = array_map(function (Value $value) {
             return [
                 'external_id' => $value->getExternalId(),
-                'title'       => $value->getTitle(),
+                'title' => $value->getTitle(),
                 'template_variables' => $value->getTemplateVariables()
             ];
         }, $job->getValues());
@@ -484,7 +485,8 @@ final class MoovlyService
 
             $postValue
                 ->setTemplateVariables($preValue->getTemplateVariables())
-                ->setTitle($preValue->getTitle());
+                ->setTitle($preValue->getTitle())
+            ;
 
             return $postValue;
         }, $postRequestValues);

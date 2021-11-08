@@ -46,6 +46,7 @@ class Job
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -69,6 +70,7 @@ class Job
     public function setOptions(array $options)
     {
         $this->options = $options;
+
         return $this;
     }
 
@@ -117,6 +119,7 @@ class Job
     public function setValues(array $values)
     {
         $this->values = $values;
+
         return $this;
     }
 
@@ -171,7 +174,7 @@ class Job
     /**
      * @return Notification[]
      */
-    public function getNotifications()
+    public function getNotifications(): array
     {
         return $this->notifications;
     }
@@ -181,7 +184,7 @@ class Job
      *
      * @return Job
      */
-    public function setNotifications($notifications)
+    public function setNotifications(array $notifications): Job
     {
         $this->notifications = $notifications;
 

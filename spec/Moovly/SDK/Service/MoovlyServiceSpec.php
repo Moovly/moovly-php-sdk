@@ -3,8 +3,6 @@
 namespace spec\Moovly\SDK\Service;
 
 use Moovly\SDK\Client\APIClient;
-use Moovly\SDK\Exception\BadAssetException;
-use Moovly\SDK\Exception\MoovlyException;
 use Moovly\SDK\Model\Job;
 use Moovly\SDK\Model\Library;
 use Moovly\SDK\Model\MoovlyObject;
@@ -18,14 +16,14 @@ use Prophecy\Argument;
 
 class MoovlyServiceSpec extends ObjectBehavior
 {
-    function it_is_initializable(APIClient $client)
+    public function it_is_initializable(APIClient $client)
     {
         $this->beConstructedWith($client, '');
 
         $this->shouldHaveType(MoovlyService::class);
     }
 
-    function it_should_get_a_video_object(APIClient $client)
+    public function it_should_get_a_video_object(APIClient $client)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -76,7 +74,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $object->getAssets()->shouldHaveCount(3);
     }
 
-    function it_should_get_a_image_object(APIClient $client)
+    public function it_should_get_a_image_object(APIClient $client)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -113,7 +111,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $object->getAssets()->shouldHaveCount(3);
     }
 
-    function it_should_get_a_sound_object(APIClient $client)
+    public function it_should_get_a_sound_object(APIClient $client)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -230,7 +228,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $this->uploadAsset($file)->shouldReturnAnInstanceOf(MoovlyObject::class);
     }
 
-    function it_can_get_a_project(APIClient $client)
+    public function it_can_get_a_project(APIClient $client)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -262,7 +260,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $project->getUpdatedAt()->shouldReturnAnInstanceOf(\DateTimeImmutable::class);
     }
 
-    function it_can_get_projects(APIClient $client)
+    public function it_can_get_projects(APIClient $client)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -298,7 +296,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $this->getProjects(null, [])->shouldHaveCount(2);
     }
 
-    function it_can_create_a_template(APIClient $client, Project $project)
+    public function it_can_create_a_template(APIClient $client, Project $project)
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
@@ -497,7 +495,12 @@ class MoovlyServiceSpec extends ObjectBehavior
         $job->getId()->willReturn(null);
         $job->getTemplate()->willReturn($template);
 
-        $client->createJob(Argument::type('string'), Argument::type('array'), Argument::type('array'), Argument::type('array'))->willReturn([
+        $client->createJob(
+            Argument::type('string'),
+            Argument::type('array'),
+            Argument::type('array'),
+            Argument::type('array')
+        )->willReturn([
             'id' => 'abc',
             'status' => 'started',
             'videos' => [

@@ -18,7 +18,10 @@ class JobFactory
      */
     public static function create(array $values)
     {
-        return (new Job())->setValues($values);
+        return (new Job())
+            ->setValues($values)
+            ->setNotifications([])
+        ;
     }
 
     /**

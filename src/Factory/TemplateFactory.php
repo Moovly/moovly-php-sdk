@@ -25,10 +25,7 @@ class TemplateFactory
         }, $response['variables']);
 
         uasort($variables, function (Variable $current, Variable $next) {
-            if ($next->getWeight() == $current->getWeight()) {
-                return 0;
-            }
-            return ($current->getWeight() < $next->getWeight()) ? -1 : 1;
+            return $next->getWeight() <=> $current->getWeight();
         });
 
         $template

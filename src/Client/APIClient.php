@@ -4,7 +4,6 @@ namespace Moovly\SDK\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Moovly\SDK\Exception\BadRequestException;
 use StringTemplate\Engine;
 
 /**
@@ -34,7 +33,7 @@ class APIClient
         'generator' => 'v1',
         'api2' => 'v1',
         'project' => 'v1',
-        'render' => 'v1',
+        'render' => 'v1'
     ];
 
     const ENDPOINT_UPLOAD_ASSET = '/api2/{version}/objects/upload';
@@ -52,10 +51,10 @@ class APIClient
     const RESTFUL_ROOT_TEMPLATE = '/generator/{version}/templates';
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
 
-    /** @var Engine  */
+    /** @var Engine */
     private $stringEngine;
 
-    /** @var Client  */
+    /** @var Client */
     private $client;
 
     /** @var string */
@@ -137,7 +136,6 @@ class APIClient
         ];
 
         return $this->doRestfulCall('GET', self::ENDPOINT_GET_RENDERS_BY_USER, self::DOMAIN_PROJECT, null, $options);
-
     }
 
     /**
@@ -157,6 +155,7 @@ class APIClient
                 'expand' => $expand
             ]
         ];
+
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
@@ -174,6 +173,7 @@ class APIClient
                 'filters' => $filters
             ]
         ];
+
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR, null, $options);
     }
 
@@ -221,7 +221,7 @@ class APIClient
      * @return array
      * @t
      */
-    public function createJob($templateId, $jobOptions, $values, $notifications)
+    public function createJob(string $templateId, array $jobOptions, array $values, array $notifications): array
     {
         $options = [
             'json' => [
@@ -363,9 +363,10 @@ class APIClient
      *
      * @return array
      */
-    public function getUploadUrl($filename, $libraryId)
+    public function getUploadUrl(string $filename, ?string $libraryId)
     {
         $object = $this->getObjectWithSignedUrl($filename, $libraryId);
+
         return $object;
     }
 
@@ -377,7 +378,7 @@ class APIClient
      *
      * @return array
      */
-    private function getObjectWithSignedUrl($filename, $libraryId)
+    private function getObjectWithSignedUrl(string $filename, ?string $libraryId): array
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_UPLOAD_VIDEO,
@@ -385,7 +386,7 @@ class APIClient
         );
 
         $form = [
-            'filename' => $filename,
+            'filename' => $filename
         ];
 
         if (!is_null($libraryId)) {

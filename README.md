@@ -1,3 +1,5 @@
+![Tests](https://github.com/Moovly/moovly-php-sdk/workflows/Tests/badge.svg)
+
 # Moovly PHP SDK
 
 This PHP SDK implements the API calls documented in the [Moovly API Hub](https://developer.moovly.com)
