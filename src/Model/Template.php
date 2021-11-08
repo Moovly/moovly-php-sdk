@@ -15,7 +15,7 @@ class Template
     /** @var string */
     private $name;
 
-    /** @var string */
+    /** @var string|null */
     private $originalProjectId;
 
     /** @var Variable[] */
@@ -78,9 +78,9 @@ class Template
     /**
      * Returns the OriginalProjectId
      *
-     * @return string
+     * @return string|null
      */
-    public function getOriginalProjectId(): string
+    public function getOriginalProjectId(): ?string
     {
         return $this->originalProjectId;
     }
@@ -88,11 +88,11 @@ class Template
     /**
      * Sets the OriginalProjectId
      *
-     * @param string $originalProjectId
+     * @param string|null $originalProjectId
      *
      * @return Template
      */
-    public function setOriginalProjectId(string $originalProjectId): Template
+    public function setOriginalProjectId(?string $originalProjectId): Template
     {
         $this->originalProjectId = $originalProjectId;
 
