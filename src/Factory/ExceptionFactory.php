@@ -28,15 +28,7 @@ class ExceptionFactory
             $APIResponse = [];
         }
 
-        $message = null;
-
-        if (array_key_exists('message', $APIResponse)) {
-            $message = $APIResponse['message'];
-        }
-
-        if (array_key_exists('error', $APIResponse)) {
-            $message = $APIResponse['error'];
-        }
+        $message = $APIResponse['message'] ?? $APIResponse['error'] ?? null;
 
         switch ($response->getStatusCode()) {
             case 400:

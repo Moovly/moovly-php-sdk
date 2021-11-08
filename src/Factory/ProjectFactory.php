@@ -21,7 +21,7 @@ class ProjectFactory
 
         $renders = [];
 
-        if (key_exists('renders', $response)) {
+        if (array_key_exists('renders', $response)) {
             $renders = RenderFactory::createFromAPIResponse($response['renders']);
         }
 

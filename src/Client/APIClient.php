@@ -35,8 +35,7 @@ class APIClient
         'project' => 'v1',
     ];
 
-    const ENDPOINT_UPLOAD_ASSET = '/api2/{version}/objects/upload';
-    const ENDPOINT_UPLOAD_VIDEO = '/api2/{version}/objects/upload/video-url';
+    const ENDPOINT_UPLOAD_VIDEO = '/api2/{version}/objects';
     const ENDPOINT_PERSONAL_LIBRARY = '/api2/{version}/user/me/personal-library';
     const ENDPOINT_GET_JOBS_BY_USER = '/generator/{version}/users/{templateId}/jobs';
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';

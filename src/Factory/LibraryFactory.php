@@ -15,7 +15,7 @@ class LibraryFactory
      *
      * @return Library
      */
-    public static function createFromAPIResponse(array $response)
+    public static function createFromAPIResponse(array $response): Library
     {
         $library = new Library();
 

@@ -103,13 +103,13 @@ final class MoovlyService
     /**
      * Returns the upload url
      *
-     * @param string  $filename
-     * @param Library $library
+     * @param string       $filename
+     * @param Library|null $library
      *
-     * @return MoovlyObject
+     * @return array
      * @throws MoovlyException
      */
-    public function getUploadUrl(string $filename, Library $library = null): MoovlyObject
+    public function getUploadUrl(string $filename, Library $library = null): array
     {
         try {
             $object = $this->client->getUploadUrl($filename, is_null($library) ? null : $library->getId());
@@ -149,11 +149,10 @@ final class MoovlyService
     /**
      * Fetches all projects.
      *
-     * @param string $filter
-     * @param string[] $expand
+     * @param string|null $filter
+     * @param string[]    $expand
      *
      * @return Project[]
-     *
      * @throws MoovlyException
      */
     public function getProjects(?string $filter = 'unarchived', array $expand = []): array
@@ -170,11 +169,9 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        $projects = array_map(function (array $project) {
+        return array_map(function (array $project) {
             return ProjectFactory::createFromAPIResponse($project);
         }, $response['results']);
-
-        return $projects;
     }
 
     /**
@@ -240,11 +237,9 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        $templates = array_map(function (array $template) {
+        return array_map(function (array $template) {
             return TemplateFactory::createFromAPIResponse($template);
         }, $response);
-
-        return $templates;
     }
 
     /**
@@ -366,11 +361,9 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        $jobs = array_map(function (array $job) {
+        return array_map(function (array $job) {
             return JobFactory::createFromAPIResponse($job);
         }, $response);
-
-        return $jobs;
     }
 
     /**
@@ -392,11 +385,9 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        $jobs = array_map(function (array $job) {
+        return array_map(function (array $job) {
             return JobFactory::createFromAPIResponse($job);
         }, $response);
-
-        return $jobs;
     }
 
     /**
@@ -452,7 +443,7 @@ final class MoovlyService
         return $contracts['state'];
     }
 
-    public function getRendersForUser($externalType)
+    public function getRendersForUser(string $externalType): array
     {
         try {
             $response = $this->client->getRendersForUser($externalType);
@@ -473,9 +464,9 @@ final class MoovlyService
      *
      * @return array
      */
-    private function mergeJobValues(array $preRequestValues, array $postRequestValues)
+    private function mergeJobValues(array $preRequestValues, array $postRequestValues): array
     {
-        $result = array_map(function (Value $postValue) use ($preRequestValues) {
+        return array_map(function (Value $postValue) use ($preRequestValues) {
             /** @var Value $preValue */
             $preValue = array_filter($preRequestValues, function (Value $preValue) use ($postValue) {
                 return $postValue->getExternalId() === $preValue->getExternalId();
@@ -488,7 +479,5 @@ final class MoovlyService
 
             return $postValue;
         }, $postRequestValues);
-
-        return $result;
     }
 }
