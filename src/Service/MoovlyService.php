@@ -151,18 +151,24 @@ final class MoovlyService
      *
      * @param string|null $filter
      * @param string[]    $expand
+     * @param int         $page
+     * @param int         $pageSize
      *
      * @return Project[]
      * @throws MoovlyException
      */
-    public function getProjects(?string $filter = 'unarchived', array $expand = []): array
-    {
+    public function getProjects(
+        ?string $filter = 'unarchived',
+        array $expand = [],
+        int $page = 1,
+        int $pageSize = 25
+    ): array {
         if (is_null($filter)) {
             $filter = 'unarchived';
         }
 
         try {
-            $response = $this->client->getProjects($filter, $expand);
+            $response = $this->client->getProjects($filter, $expand, $page, $pageSize);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 

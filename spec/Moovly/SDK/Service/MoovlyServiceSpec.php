@@ -264,7 +264,14 @@ class MoovlyServiceSpec extends ObjectBehavior
     {
         $client->setToken(Argument::type('string'))->shouldBeCalled();
 
-        $client->getProjects(Argument::type('string'), Argument::type('array'))->willReturn([
+        $client
+            ->getProjects(
+                Argument::type('string'),
+                Argument::type('array'),
+                Argument::type('int'),
+                Argument::type('int')
+            )
+            ->willReturn([
             'results' => [
                 [
                     'id' => 'ABC',

@@ -108,16 +108,20 @@ class APIClient
      *
      * @param string|null $filter
      * @param string[]    $expand
+     * @param int         $page
+     * @param int         $pageSize
      *
      * @return array
      * @throws ClientException
      */
-    public function getProjects(?string $filter = null, array $expand = []): array
+    public function getProjects(?string $filter = null, array $expand = [], int $page = 1, int $pageSize = 25): array
     {
         $options = [
             'query' => [
                 'filter' => $filter,
-                'expand' => $expand
+                'expand' => $expand,
+                'page' => $page,
+                'page_size' => $pageSize
             ]
         ];
 
