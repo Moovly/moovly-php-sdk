@@ -148,13 +148,14 @@ class APIClient
      *
      * @throws ClientException
      */
-    public function ($id, $expand = [])
+    public function getProject($id, $expand = [])
     {
         $options = [
             'query' => [
                 'expand' => $expand
             ]
         ];
+
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_PROJECT, self::DOMAIN_PROJECT, $id, $options);
     }
 
@@ -172,6 +173,7 @@ class APIClient
                 'filters' => $filters
             ]
         ];
+
         return $this->doRestfulCall('GET', self::RESTFUL_ROOT_TEMPLATE, self::DOMAIN_GENERATOR, null, $options);
     }
 
@@ -364,6 +366,7 @@ class APIClient
     public function getUploadUrl(string $filename, ?string $libraryId)
     {
         $object = $this->getObjectWithSignedUrl($filename, $libraryId);
+
         return $object;
     }
 
