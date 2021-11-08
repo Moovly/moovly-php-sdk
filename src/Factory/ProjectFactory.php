@@ -32,7 +32,7 @@ class ProjectFactory
             ->setThumbnailPath($response['thumb'])
             ->setRenders($renders)
             ->setArchived($response['archived'])
-            ->setPending($response['pending'])
+            ->setPending($response['state'] == 'pending')
             ->setCreatedAt(new \DateTimeImmutable($response['created_at']))
             ->setUpdatedAt(new \DateTimeImmutable($response['updated_at']))
             ->setCreatedBy((string) $response['created_by'])

@@ -14,10 +14,10 @@ class Project
     /** @var string */
     private $label;
 
-    /** @var string */
+    /** @var string|null */
     private $description;
 
-    /** @var string */
+    /** @var string|null */
     private $thumbnailPath;
 
     /** @var Render[] */
@@ -35,7 +35,7 @@ class Project
     /** @var \DateTimeImmutable */
     private $createdAt;
 
-    /** @var \DateTimeImmutable */
+    /** @var ?\DateTimeImmutable */
     private $updatedAt;
 
     /** @var string */
@@ -92,9 +92,9 @@ class Project
     /**
      * Returns the Description
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -102,11 +102,11 @@ class Project
     /**
      * Sets the Description
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return Project
      */
-    public function setDescription(string $description): Project
+    public function setDescription(?string $description): Project
     {
         $this->description = $description;
 
@@ -116,9 +116,9 @@ class Project
     /**
      * Returns the ThumbnailPath
      *
-     * @return string
+     * @return string|null
      */
-    public function getThumbnailPath(): string
+    public function getThumbnailPath(): ?string
     {
         return $this->thumbnailPath;
     }
@@ -126,11 +126,11 @@ class Project
     /**
      * Sets the ThumbnailPath
      *
-     * @param string $thumbnailPath
+     * @param string|null $thumbnailPath
      *
      * @return Project
      */
-    public function setThumbnailPath(string $thumbnailPath): Project
+    public function setThumbnailPath(?string $thumbnailPath): Project
     {
         $this->thumbnailPath = $thumbnailPath;
 
@@ -262,9 +262,9 @@ class Project
     /**
      * Returns the UpdatedAt
      *
-     * @return \DateTimeImmutable
+     * @return \DateTimeImmutable|null
      */
-    public function getUpdatedAt(): \DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
@@ -272,11 +272,11 @@ class Project
     /**
      * Sets the UpdatedAt
      *
-     * @param \DateTimeImmutable $updatedAt
+     * @param \DateTimeImmutable|null $updatedAt
      *
      * @return Project
      */
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): Project
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): Project
     {
         $this->updatedAt = $updatedAt;
 
