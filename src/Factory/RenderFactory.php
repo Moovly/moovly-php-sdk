@@ -15,7 +15,7 @@ class RenderFactory
      *
      * @return Render[]
      */
-    public static function createFromAPIResponse(array $renders)
+    public static function createFromAPIResponse(array $renders) : array
     {
         $results = [];
 

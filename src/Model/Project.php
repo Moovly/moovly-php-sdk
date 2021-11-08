@@ -46,7 +46,7 @@ class Project
      *
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -58,7 +58,7 @@ class Project
      *
      * @return Project
      */
-    public function setId($id)
+    public function setId(string $id): Project
     {
         $this->id = $id;
 
@@ -70,7 +70,7 @@ class Project
      *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -82,7 +82,7 @@ class Project
      *
      * @return Project
      */
-    public function setLabel($label)
+    public function setLabel(string $label): Project
     {
         $this->label = $label;
 
@@ -94,7 +94,7 @@ class Project
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -106,7 +106,7 @@ class Project
      *
      * @return Project
      */
-    public function setDescription($description)
+    public function setDescription(string $description): Project
     {
         $this->description = $description;
 
@@ -118,7 +118,7 @@ class Project
      *
      * @return string
      */
-    public function getThumbnailPath()
+    public function getThumbnailPath(): string
     {
         return $this->thumbnailPath;
     }
@@ -130,7 +130,7 @@ class Project
      *
      * @return Project
      */
-    public function setThumbnailPath($thumbnailPath)
+    public function setThumbnailPath(string $thumbnailPath): Project
     {
         $this->thumbnailPath = $thumbnailPath;
 
@@ -142,7 +142,7 @@ class Project
      *
      * @return Render[]
      */
-    public function getRenders()
+    public function getRenders(): array
     {
         return $this->renders;
     }
@@ -154,7 +154,7 @@ class Project
      *
      * @return Project
      */
-    public function setRenders(array $renders)
+    public function setRenders(array $renders): Project
     {
         $this->renders = $renders;
 
@@ -166,7 +166,7 @@ class Project
      *
      * @return float
      */
-    public function getDuration()
+    public function getDuration(): float
     {
         return $this->duration;
     }
@@ -178,7 +178,7 @@ class Project
      *
      * @return Project
      */
-    public function setDuration($duration)
+    public function setDuration(float $duration): Project
     {
         $this->duration = (float) $duration;
 
@@ -190,7 +190,7 @@ class Project
      *
      * @return bool
      */
-    public function isArchived()
+    public function isArchived(): bool
     {
         return $this->archived;
     }
@@ -202,7 +202,7 @@ class Project
      *
      * @return Project
      */
-    public function setArchived($archived)
+    public function setArchived(bool $archived): Project
     {
         $this->archived = $archived;
 
@@ -216,7 +216,7 @@ class Project
      *
      * @return bool
      */
-    public function isPending()
+    public function isPending(): bool
     {
         return $this->pending;
     }
@@ -228,7 +228,7 @@ class Project
      *
      * @return Project
      */
-    public function setPending($pending)
+    public function setPending(bool $pending): Project
     {
         $this->pending = $pending;
 
@@ -240,7 +240,7 @@ class Project
      *
      * @return \DateTimeImmutable
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -252,7 +252,7 @@ class Project
      *
      * @return Project
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt)
+    public function setCreatedAt(\DateTimeImmutable $createdAt): Project
     {
         $this->createdAt = $createdAt;
 
@@ -264,7 +264,7 @@ class Project
      *
      * @return \DateTimeImmutable
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): \DateTimeImmutable
     {
         return $this->updatedAt;
     }
@@ -276,7 +276,7 @@ class Project
      *
      * @return Project
      */
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt)
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): Project
     {
         $this->updatedAt = $updatedAt;
 
@@ -288,7 +288,7 @@ class Project
      *
      * @return string
      */
-    public function getCreatedBy()
+    public function getCreatedBy(): string
     {
         return $this->createdBy;
     }
@@ -300,7 +300,7 @@ class Project
      *
      * @return Project
      */
-    public function setCreatedBy($createdBy)
+    public function setCreatedBy(string $createdBy): Project
     {
         $this->createdBy = $createdBy;
 

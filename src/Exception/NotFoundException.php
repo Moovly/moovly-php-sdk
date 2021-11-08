@@ -15,12 +15,7 @@ class NotFoundException extends MoovlyException
     const CODE = 400;
     const MESSAGE = 'The API call you made was against a non-existant endpoint or couldn\'t find the resource. Additional message given: %s';
 
-    /**
-     * NotFoundException constructor.
-     *
-     * @param string $reason
-     */
-    public function __construct($reason)
+    public function __construct(string $reason)
     {
         parent::__construct(sprintf(self::MESSAGE, $reason), self::CODE);
     }

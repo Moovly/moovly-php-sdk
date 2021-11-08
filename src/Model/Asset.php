@@ -32,7 +32,7 @@ class Asset
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -44,7 +44,7 @@ class Asset
      *
      * @return Asset
      */
-    public function setType($type)
+    public function setType(string $type): Asset
     {
         $this->type = $type;
 
@@ -56,7 +56,7 @@ class Asset
      *
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return $this->version;
     }
@@ -68,7 +68,7 @@ class Asset
      *
      * @return Asset
      */
-    public function setVersion($version)
+    public function setVersion(string $version): Asset
     {
         $this->version = $version;
 
@@ -80,7 +80,7 @@ class Asset
      *
      * @return float|null
      */
-    public function getScale()
+    public function getScale(): ?float
     {
         return $this->scale;
     }
@@ -92,7 +92,7 @@ class Asset
      *
      * @return Asset
      */
-    public function setScale($scale)
+    public function setScale(?float $scale): Asset
     {
         $this->scale = $scale;
 
@@ -104,7 +104,7 @@ class Asset
      *
      * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return $this->source;
     }
@@ -116,7 +116,7 @@ class Asset
      *
      * @return Asset
      */
-    public function setSource($source)
+    public function setSource(string $source): Asset
     {
         $this->source = $source;
 

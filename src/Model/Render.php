@@ -208,7 +208,7 @@ class Render
      *
      * @return null|\DateTimeImmutable
      */
-    public function getStartedAt()
+    public function getStartedAt(): \DateTimeImmutable
     {
         return $this->startedAt;
     }
@@ -220,7 +220,7 @@ class Render
      *
      * @return Render
      */
-    public function setStartedAt(\DateTimeImmutable $startedAt = null)
+    public function setStartedAt(?\DateTimeImmutable $startedAt): Render
     {
         $this->startedAt = $startedAt;
 
@@ -232,7 +232,7 @@ class Render
      *
      * @return null|\DateTimeImmutable
      */
-    public function getDateFinished()
+    public function getDateFinished(): \DateTimeImmutable
     {
         return $this->dateFinished;
     }
@@ -244,7 +244,7 @@ class Render
      *
      * @return Render
      */
-    public function setDateFinished(\DateTimeImmutable $dateFinished = null)
+    public function setDateFinished(?\DateTimeImmutable $dateFinished): Render
     {
         $this->dateFinished = $dateFinished;
 

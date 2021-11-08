@@ -515,7 +515,7 @@ class MoovlyServiceSpec extends ObjectBehavior
 
         $this->beConstructedWith($client, '');
 
-        $this->createJob($job, [])->shouldBeAnInstanceOf(Job::class);
+        $this->createJob($job)->shouldBeAnInstanceOf(Job::class);
     }
 
     public function it_can_get_jobs_by_user(APIClient $client, User $user)

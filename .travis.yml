@@ -1,0 +1,18 @@
+
+sudo: required
+
+language: php
+
+services:
+  - docker
+
+matrix:
+  include:
+    - php: 7.1
+    - php: 7.2
+    
+before_script:
+  - composer install
+  
+script:
+  - php vendor/bin/phpspec run

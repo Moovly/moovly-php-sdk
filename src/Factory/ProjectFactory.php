@@ -15,7 +15,7 @@ class ProjectFactory
      *
      * @return Project
      */
-    public static function createFromAPIResponse(array $response)
+    public static function createFromAPIResponse(array $response): Project
     {
         $project = new Project();
 

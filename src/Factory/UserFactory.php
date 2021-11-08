@@ -15,7 +15,7 @@ class UserFactory
      *
      * @return User
      */
-    public static function createFromAPIResponse(array $response)
+    public static function createFromAPIResponse(array $response): User
     {
         return (new User())
             ->setId($response['id'])

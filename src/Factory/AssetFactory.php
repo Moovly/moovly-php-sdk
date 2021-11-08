@@ -17,7 +17,7 @@ class AssetFactory
      *
      * @return Asset[]
      */
-    public static function createFromAPIResponse($objectType, array $assets)
+    public static function createFromAPIResponse(string $objectType, array $assets): array
     {
         switch ($objectType) {
             case MoovlyObject::TYPE_VIDEO:
@@ -36,7 +36,7 @@ class AssetFactory
      *
      * @return Asset[]
      */
-    private static function createAssetsForVideo(array $assets)
+    private static function createAssetsForVideo(array $assets): array
     {
         $result = [];
 
@@ -72,7 +72,7 @@ class AssetFactory
      *
      * @return Asset[]
      */
-    private static function createAssetsForSound(array $assets)
+    private static function createAssetsForSound(array $assets): array
     {
         $result = [];
 
@@ -93,7 +93,7 @@ class AssetFactory
      *
      * @return Asset[]
      */
-    private static function createAssetsForImage(array $assets)
+    private static function createAssetsForImage(array $assets): array
     {
         $result = [];
 
