@@ -16,7 +16,7 @@ class JobFactory
      *
      * @return Job
      */
-    public static function create(array $values): Job
+    public static function create(array $values)
     {
         return (new Job())
             ->setValues($values)
@@ -29,7 +29,7 @@ class JobFactory
      *
      * @return Job
      */
-    public static function createFromAPIResponse(array $response): Job
+    public static function createFromAPIResponse(array $response)
     {
         $job = new Job();
 

@@ -21,10 +21,10 @@ class Template
     /** @var Variable[] */
     private $variables;
 
-    /** @var string|null */
+    /** @var string */
     private $thumbnail;
 
-    /** @var string|null */
+    /** @var string */
     private $preview;
 
     /**
@@ -32,7 +32,7 @@ class Template
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -44,7 +44,7 @@ class Template
      *
      * @return Template
      */
-    public function setId(string $id): Template
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -56,7 +56,7 @@ class Template
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -68,7 +68,7 @@ class Template
      *
      * @return Template
      */
-    public function setName(string $name): Template
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -80,7 +80,7 @@ class Template
      *
      * @return string
      */
-    public function getOriginalProjectId(): string
+    public function getOriginalProjectId()
     {
         return $this->originalProjectId;
     }
@@ -92,7 +92,7 @@ class Template
      *
      * @return Template
      */
-    public function setOriginalProjectId(string $originalProjectId): Template
+    public function setOriginalProjectId($originalProjectId)
     {
         $this->originalProjectId = $originalProjectId;
 
@@ -104,7 +104,7 @@ class Template
      *
      * @return Variable[]
      */
-    public function getVariables(): array
+    public function getVariables()
     {
         return $this->variables;
     }
@@ -116,7 +116,7 @@ class Template
      *
      * @return Template
      */
-    public function setVariables(array $variables): Template
+    public function setVariables(array $variables)
     {
         $this->variables = $variables;
 
@@ -126,9 +126,9 @@ class Template
     /**
      * Returns the Thumbnail
      *
-     * @return null|string
+     * @return string
      */
-    public function getThumbnail(): ?string
+    public function getThumbnail()
     {
         return $this->thumbnail;
     }
@@ -136,11 +136,11 @@ class Template
     /**
      * Sets the Thumbnail
      *
-     * @param null|string $thumbnail
+     * @param string $thumbnail
      *
      * @return Template
      */
-    public function setThumbnail(?string $thumbnail): Template
+    public function setThumbnail($thumbnail)
     {
         $this->thumbnail = $thumbnail;
 
@@ -150,9 +150,9 @@ class Template
     /**
      * Returns the Preview
      *
-     * @return null|string
+     * @return string
      */
-    public function getPreview(): ?string
+    public function getPreview()
     {
         return $this->preview;
     }
@@ -160,11 +160,11 @@ class Template
     /**
      * Sets the Preview
      *
-     * @param null|string $preview
+     * @param string $preview
      *
      * @return Template
      */
-    public function setPreview(?string $preview): Template
+    public function setPreview($preview)
     {
         $this->preview = $preview;
 

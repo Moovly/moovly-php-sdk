@@ -31,7 +31,7 @@ class Job
      *
      * @return string
      */
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
     }
@@ -43,7 +43,7 @@ class Job
      *
      * @return Job
      */
-    public function setId(string $id): Job
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -55,7 +55,7 @@ class Job
      *
      * @return array
      */
-    public function getOptions(): array
+    public function getOptions()
     {
         return $this->options;
     }
@@ -67,7 +67,7 @@ class Job
      *
      * @return Job
      */
-    public function setOptions(array $options): Job
+    public function setOptions(array $options)
     {
         $this->options = $options;
 
@@ -80,7 +80,7 @@ class Job
      *
      * @return Template
      */
-    public function getTemplate(): ?Template
+    public function getTemplate()
     {
         return $this->template;
     }
@@ -92,7 +92,7 @@ class Job
      *
      * @return Job
      */
-    public function setTemplate(Template $template): Job
+    public function setTemplate(Template $template)
     {
         $this->template = $template;
 
@@ -104,7 +104,7 @@ class Job
      *
      * @return Value[]
      */
-    public function getValues(): array
+    public function getValues()
     {
         return $this->values;
     }
@@ -116,7 +116,7 @@ class Job
      *
      * @return Job
      */
-    public function setValues(array $values): Job
+    public function setValues(array $values)
     {
         $this->values = $values;
 
@@ -126,7 +126,7 @@ class Job
     /**
      * @return string
      */
-    public function getQuality(): string
+    public function getQuality()
     {
         return $this->options['quality'];
     }
@@ -134,7 +134,7 @@ class Job
     /**
      * @return bool
      */
-    public function createsMoov(): bool
+    public function createsMoov()
     {
         return $this->options['create_moov'];
     }
@@ -142,7 +142,7 @@ class Job
     /**
      * @return bool
      */
-    public function autoRenders(): bool
+    public function autoRenders()
     {
         return $this->options['auto_render'];
     }
@@ -152,7 +152,7 @@ class Job
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -164,7 +164,7 @@ class Job
      *
      * @return Job
      */
-    public function setStatus(string $status): Job
+    public function setStatus($status)
     {
         $this->status = $status;
 

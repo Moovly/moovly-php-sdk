@@ -37,7 +37,7 @@ class ValueFactory
      *
      * @return Value
      */
-    public static function createFromAPIResponse(array $response): Value
+    public static function createFromAPIResponse(array $response)
     {
         return (new Value())
             ->setExternalId($response['external_id'])

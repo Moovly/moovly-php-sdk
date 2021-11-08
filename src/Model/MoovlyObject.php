@@ -47,7 +47,7 @@ class MoovlyObject
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
@@ -59,7 +59,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setId(string $id): MoovlyObject
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -71,7 +71,7 @@ class MoovlyObject
      *
      * @return array
      */
-    public function getAssets(): array
+    public function getAssets()
     {
         return $this->assets;
     }
@@ -83,7 +83,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setAssets(array $assets): MoovlyObject
+    public function setAssets(array $assets)
     {
         $this->assets = $assets;
 
@@ -95,7 +95,7 @@ class MoovlyObject
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
@@ -107,7 +107,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setType(string $type): MoovlyObject
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -119,7 +119,7 @@ class MoovlyObject
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->label;
     }
@@ -131,7 +131,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setLabel(string $label): MoovlyObject
+    public function setLabel($label)
     {
         $this->label = $label;
 
@@ -143,7 +143,7 @@ class MoovlyObject
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -155,7 +155,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setDescription(string $description): MoovlyObject
+    public function setDescription($description)
     {
         $this->description = $description;
 
@@ -167,7 +167,7 @@ class MoovlyObject
      *
      * @return string
      */
-    public function getThumbnailPath(): string
+    public function getThumbnailPath()
     {
         return $this->thumbnailPath;
     }
@@ -179,7 +179,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setThumbnailPath(string $thumbnailPath): MoovlyObject
+    public function setThumbnailPath($thumbnailPath)
     {
         $this->thumbnailPath = $thumbnailPath;
 
@@ -191,7 +191,7 @@ class MoovlyObject
      *
      * @return array
      */
-    public function getTags(): array
+    public function getTags()
     {
         return $this->tags;
     }
@@ -203,7 +203,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setTags(array $tags): MoovlyObject
+    public function setTags(array $tags)
     {
         $this->tags = $tags;
 
@@ -218,7 +218,7 @@ class MoovlyObject
      *
      * @return bool
      */
-    public function isAlpha(): bool
+    public function isAlpha()
     {
         return $this->alpha;
     }
@@ -230,7 +230,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setAlpha(bool $isAlpha): MoovlyObject
+    public function setAlpha($isAlpha)
     {
         $this->alpha = $isAlpha;
 
@@ -242,7 +242,7 @@ class MoovlyObject
      *
      * @return bool
      */
-    public function getStatus(): bool
+    public function getStatus()
     {
         return $this->status;
     }
@@ -254,7 +254,7 @@ class MoovlyObject
      *
      * @return MoovlyObject
      */
-    public function setStatus(bool $status): MoovlyObject
+    public function setStatus($status)
     {
         $this->status = $status;
 

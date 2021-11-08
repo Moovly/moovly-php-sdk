@@ -35,7 +35,7 @@ class Value
      *
      * @return string
      */
-    public function getExternalId(): string
+    public function getExternalId()
     {
         return $this->externalId;
     }
@@ -47,7 +47,7 @@ class Value
      *
      * @return Value
      */
-    public function setExternalId(string $externalId): Value
+    public function setExternalId($externalId)
     {
         $this->externalId = $externalId;
 
@@ -59,7 +59,7 @@ class Value
      *
      * @return string
      */
-    public function getTitle(): ?string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -71,7 +71,7 @@ class Value
      *
      * @return Value
      */
-    public function setTitle(string $title): Value
+    public function setTitle($title)
     {
         $this->title = $title;
 
@@ -83,7 +83,7 @@ class Value
      *
      * @return array
      */
-    public function getTemplateVariables(): ?array
+    public function getTemplateVariables()
     {
         return $this->templateVariables;
     }
@@ -95,7 +95,7 @@ class Value
      *
      * @return Value
      */
-    public function setTemplateVariables(array $templateVariables): Value
+    public function setTemplateVariables(array $templateVariables)
     {
         $this->templateVariables = $templateVariables;
 
@@ -119,7 +119,7 @@ class Value
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -131,7 +131,7 @@ class Value
      *
      * @return Value
      */
-    public function setStatus(string $status): Value
+    public function setStatus($status)
     {
         $this->status = $status;
 
@@ -143,7 +143,7 @@ class Value
      *
      * @return null|string
      */
-    public function getUrl(): ?string
+    public function getUrl()
     {
         return $this->url;
     }
@@ -155,7 +155,7 @@ class Value
      *
      * @return Value
      */
-    public function setUrl(?string $url): Value
+    public function setUrl($url)
     {
         $this->url = $url;
 
@@ -167,7 +167,7 @@ class Value
      *
      * @return null|string
      */
-    public function getError(): ?string
+    public function getError()
     {
         return $this->error;
     }
@@ -179,7 +179,7 @@ class Value
      *
      * @return Value
      */
-    public function setError(?string $error): Value
+    public function setError($error)
     {
         $this->error = $error;
 

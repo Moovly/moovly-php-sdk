@@ -15,7 +15,7 @@ class RenderFactory
      *
      * @return Render[]
      */
-    public static function createFromAPIResponse(array $renders) : array
+    public static function createFromAPIResponse(array $renders)
     {
         $results = [];
 
@@ -24,16 +24,17 @@ class RenderFactory
                 continue;
             }
 
+            //Todo move Render model to new structure
             $results[] = (new Render())
                 ->setId($render['id'])
-                ->setState($render['state'])
-                ->setStartedAt(new \DateTimeImmutable($render['started_at']))
-                ->setDateFinished(new \DateTimeImmutable($render['date_finished']))
-                ->setUrl($render['url'])
+                ->setState($render['finished'] ? 'finished' : 'pending')
+                ->setStartedAt(new \DateTimeImmutable($render['last_attempt_started_at']))
+                ->setDateFinished(new \DateTimeImmutable($render['finished_at']))
+                ->setUrl($render['video_url'])
                 ->setError($render['error'])
                 ->setQuality($render['quality'])
                 ->setType($render['type'])
-                ->setProjectId($render['project_id']);
+                ->setProjectId($render['external_id']);
         }
 
         return $results;

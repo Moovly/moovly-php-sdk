@@ -17,10 +17,11 @@ class ExceptionFactory
 {
     /**
      * @param ResponseInterface $response
+     * @param \Exception        $e
      *
      * @return MoovlyException
      */
-    public static function create(ResponseInterface $response, \Exception $e): MoovlyException
+    public static function create(ResponseInterface $response, \Exception $e)
     {
         try {
             $APIResponse = json_decode($response->getBody()->getContents(), true);
