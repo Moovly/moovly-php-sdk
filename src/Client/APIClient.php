@@ -41,6 +41,7 @@ class APIClient
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
     const ENDPOINT_GET_CONTRACTS_BY_USER = '/generator/{version}/users/me/contracts';
     const ENDPOINT_GET_RENDERS_BY_USER = '/render/{version}/renders';
+    const ENDPOINT_DELETE_RENDER = '/renders/{version}/renders/%s';
 
     const RESTFUL_ROOT_USER = '/user/{version}/users';
     const RESTFUL_ROOT_PROJECT = '/project/{version}/projects';
@@ -367,6 +368,17 @@ class APIClient
     public function getUploadUrl(string $filename, ?string $libraryId): array
     {
         return $this->getObjectWithSignedUrl($filename, $libraryId);
+    }
+
+    public function deleteRender(string $renderId): void
+    {
+        $this->doRestfulCall(
+            'DELETE',
+            sprintf(self::ENDPOINT_DELETE_RENDER, $renderId),
+            self::DOMAIN_PROJECT,
+            null,
+            []
+        );
     }
 
     /**

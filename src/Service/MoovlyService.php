@@ -462,6 +462,17 @@ final class MoovlyService
         return RenderFactory::createFromAPIResponse($response);
     }
 
+    public function deleteRender(string $renderId): void
+    {
+        try {
+            $this->client->deleteRender($renderId);
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+    }
+
     /**
      * Makes sure the API of newly created jobs is as complete for values as possible.
      *
