@@ -459,7 +459,7 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        return RenderFactory::createFromAPIResponse($response);
+        return RenderFactory::createFromAPIResponse($response['results']);
     }
 
     public function deleteRender(string $renderId): void
