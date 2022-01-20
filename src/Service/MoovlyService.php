@@ -449,10 +449,10 @@ final class MoovlyService
         return $contracts['state'];
     }
 
-    public function getRendersForUser(string $externalType): array
+    public function getRendersForUser(string $externalType, int $page = 1, int $pageSize = 25): array
     {
         try {
-            $response = $this->client->getRendersForUser($externalType);
+            $response = $this->client->getRendersForUser($externalType, $page, $pageSize);
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
 
