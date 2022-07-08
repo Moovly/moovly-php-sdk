@@ -15,7 +15,7 @@ class RenderFactory
      *
      * @return Render[]
      */
-    public static function createFromAPIResponse(array $renders) : array
+    public static function createFromAPIResponse(array $renders): array
     {
         $results = [];
 
@@ -34,7 +34,10 @@ class RenderFactory
                 ->setError($render['error'])
                 ->setQuality($render['quality'])
                 ->setType($render['external_type'])
-                ->setProjectId($render['external_id']);
+                ->setProjectId($render['external_id'])
+                ->setWidth($render['width'])
+                ->setHeight($render['height'])
+                ->setThumbnail($render['thumbnail']);
         }
 
         return $results;

@@ -35,6 +35,17 @@ class Render
     /** @var null|\DateTimeImmutable */
     private $dateFinished;
 
+
+    /** @var null|int */
+    private $width = null;
+
+
+    /** @var null|int */
+    private $height = null;
+
+    /** @var null|string */
+    private $thumbnail = null;
+
     /**
      * Returns the Id
      *
@@ -247,6 +258,80 @@ class Render
     public function setDateFinished(?\DateTimeImmutable $dateFinished): Render
     {
         $this->dateFinished = $dateFinished;
+
+        return $this;
+    }
+
+
+    /**
+     * Returns the width
+     *
+     * @return null|int
+     */
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    /**
+     * Sets the width
+     *
+     * @param null|int $width
+     *
+     * @return Render
+     */
+    public function setWidth(?int $width): Render
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Returns the height
+     *
+     * @return null|int
+     */
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    /**
+     * Sets the height
+     *
+     * @param null|int $height
+     *
+     * @return Render
+     */
+    public function setHeight(?int $height): Render
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+
+    /**
+     * Returns the thumbnail
+     *
+     * @return null|string
+     */
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * Sets the height
+     *
+     * @param null|string $thumbnail
+     *
+     * @return Render
+     */
+    public function setThumbnail(?string $thumb): Render
+    {
+        $this->thumbnail = $thumb;
 
         return $this;
     }
