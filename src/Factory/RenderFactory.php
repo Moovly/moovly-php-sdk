@@ -36,7 +36,8 @@ class RenderFactory
                 ->setType($render['external_type'])
                 ->setProjectId($render['external_id'])
                 ->setWidth($render['width'])
-                ->setHeight($render['height']);
+                ->setHeight($render['height'])
+                ->setThumbnail($render['thumbnail']);
         }
 
         return $results;

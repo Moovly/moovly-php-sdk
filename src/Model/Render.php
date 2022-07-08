@@ -43,6 +43,9 @@ class Render
     /** @var null|int */
     private $height = null;
 
+    /** @var null|string */
+    private $thumbnail = null;
+
     /**
      * Returns the Id
      *
@@ -304,6 +307,31 @@ class Render
     public function setHeight(?int $height): Render
     {
         $this->height = $height;
+
+        return $this;
+    }
+
+
+    /**
+     * Returns the thumbnail
+     *
+     * @return null|string
+     */
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * Sets the height
+     *
+     * @param null|string $thumbnail
+     *
+     * @return Render
+     */
+    public function setThumbnail(?string $thumb): Render
+    {
+        $this->thumbnail = $thumb;
 
         return $this;
     }
