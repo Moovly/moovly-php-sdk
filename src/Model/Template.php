@@ -27,6 +27,9 @@ class Template
     /** @var string|null */
     private $preview;
 
+    /** @var array|null */
+    private $quality;
+
     /**
      * Returns the Id
      *
@@ -167,6 +170,31 @@ class Template
     public function setPreview(?string $preview): Template
     {
         $this->preview = $preview;
+
+        return $this;
+    }
+
+
+    /**
+     * Returns the quality
+     *
+     * @return array|null
+     */
+    public function getQuality(): ?array
+    {
+        return $this->quality;
+    }
+
+    /**
+     * Sets the Quality
+     *
+     * @param array|null $quality
+     *
+     * @return Template
+     */
+    public function setQuality(?array $quality): Template
+    {
+        $this->quality = $quality;
 
         return $this;
     }

@@ -35,7 +35,7 @@ class TemplateFactory
             ->setThumbnail($response['thumb'] ?? null)
             ->setPreview($response['preview'] ?? null)
             ->setVariables($variables)
-        ;
+            ->setQuality($response['quality']);
 
         return $template;
     }
