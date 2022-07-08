@@ -260,7 +260,6 @@ class Render
         return $this;
     }
 
-
     /**
      * Returns the width
      *
