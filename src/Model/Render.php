@@ -35,10 +35,8 @@ class Render
     /** @var null|\DateTimeImmutable */
     private $dateFinished;
 
-
     /** @var null|int */
     private $width = null;
-
 
     /** @var null|int */
     private $height = null;
