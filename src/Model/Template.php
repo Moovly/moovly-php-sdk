@@ -174,7 +174,6 @@ class Template
         return $this;
     }
 
-
     /**
      * Returns the quality
      *

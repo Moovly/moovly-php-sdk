@@ -35,10 +35,8 @@ class Render
     /** @var null|\DateTimeImmutable */
     private $dateFinished;
 
-
     /** @var null|int */
     private $width = null;
-
 
     /** @var null|int */
     private $height = null;
@@ -262,7 +260,6 @@ class Render
         return $this;
     }
 
-
     /**
      * Returns the width
      *
@@ -310,7 +307,6 @@ class Render
 
         return $this;
     }
-
 
     /**
      * Returns the thumbnail
