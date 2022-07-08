@@ -311,7 +311,6 @@ class Render
         return $this;
     }
 
-
     /**
      * Returns the thumbnail
      *
