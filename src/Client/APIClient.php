@@ -40,6 +40,7 @@ class APIClient
     const ENDPOINT_GET_JOBS_BY_USER = '/generator/{version}/users/{templateId}/jobs';
     const ENDPOINT_GET_JOBS_BY_TEMPLATE = '/generator/{version}/templates/{templateId}/jobs';
     const ENDPOINT_GET_CONTRACTS_BY_USER = '/generator/{version}/users/me/contracts';
+
     const ENDPOINT_GET_RENDERS_BY_USER = '/render/{version}/users/me/renders';
     const ENDPOINT_DELETE_RENDER = '/project/{version}/renders/%s';
 
@@ -49,6 +50,9 @@ class APIClient
     const RESTFUL_ROOT_OBJECT = '/api2/{version}/objects';
     const RESTFUL_ROOT_TEMPLATE = '/generator/{version}/templates';
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
+
+    const ENDPOINT_GET_LICENSE_BY_USER = 'license/{version}/users/me/licenses';
+
 
     /** @var Engine */
     private $stringEngine;
@@ -257,6 +261,22 @@ class APIClient
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_GET_CONTRACTS_BY_USER,
+            ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
+        );
+
+        $response = $this->client->get($endpoint, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s', $this->token)
+            ]
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    public function getUserLicense()
+    {
+        $endpoint = $this->stringEngine->render(
+            self::ENDPOINT_GET_LICENSE_BY_USER,
             ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
         );
 

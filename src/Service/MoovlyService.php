@@ -9,6 +9,7 @@ use Moovly\SDK\Exception\MoovlyException;
 use Moovly\SDK\Factory\ExceptionFactory;
 use Moovly\SDK\Factory\JobFactory;
 use Moovly\SDK\Factory\LibraryFactory;
+use Moovly\SDK\Factory\LicenseFactory;
 use Moovly\SDK\Factory\ObjectFactory;
 use Moovly\SDK\Factory\ProjectFactory;
 use Moovly\SDK\Factory\RenderFactory;
@@ -494,10 +495,22 @@ final class MoovlyService
 
             $postValue
                 ->setTemplateVariables($preValue[0]->getTemplateVariables())
-                ->setTitle($preValue[0]->getTitle())
-            ;
+                ->setTitle($preValue[0]->getTitle());
 
             return $postValue;
         }, $postRequestValues);
+    }
+
+    public function getLicense()
+    {
+        try {
+            $license = LicenseFactory::createFromAPIResponse($this->client->getUserLicense());
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return $license;
     }
 }
