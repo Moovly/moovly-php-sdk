@@ -502,7 +502,7 @@ final class MoovlyService
         }, $postRequestValues);
     }
 
-    public function getUserLicense(): License
+    public function getUserSubscription(): License
     {
         try {
             $license = LicenseFactory::createFromAPIResponse($this->client->getUserLicense());
