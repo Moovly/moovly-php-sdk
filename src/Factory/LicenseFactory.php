@@ -3,7 +3,6 @@
 namespace Moovly\SDK\Factory;
 
 use Moovly\SDK\Model\License;
-use Moovly\SDK\Model\Project;
 
 /**
  * Class LicenseFactory
