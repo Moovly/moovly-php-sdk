@@ -17,6 +17,7 @@ use Moovly\SDK\Factory\TemplateFactory;
 use Moovly\SDK\Factory\UserFactory;
 use Moovly\SDK\Model\Job;
 use Moovly\SDK\Model\Library;
+use Moovly\SDK\Model\License;
 use Moovly\SDK\Model\MoovlyObject;
 use Moovly\SDK\Model\Notification;
 use Moovly\SDK\Model\Project;
@@ -501,7 +502,7 @@ final class MoovlyService
         }, $postRequestValues);
     }
 
-    public function getLicense()
+    public function getUserLicense(): License
     {
         try {
             $license = LicenseFactory::createFromAPIResponse($this->client->getUserLicense());

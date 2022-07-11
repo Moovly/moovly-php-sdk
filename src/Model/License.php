@@ -8,13 +8,13 @@ namespace Moovly\SDK\Model;
  */
 class License
 {
-    /** @var string */
+    /** @var string|null */
     private $createdAt;
 
     /** @var bool */
     private $expired;
 
-    /** @var string */
+    /** @var string|null */
     private $expiresAt;
 
     /** @var string */
