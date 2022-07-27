@@ -42,7 +42,7 @@ class Project
     private $createdBy;
 
     /** @var array|null */
-    private $stage;
+    private $stage = null;
 
     /**
      * Returns the Id
@@ -327,7 +327,7 @@ class Project
      *
      * @return Project
      */
-    public function setStage(string $stage): Project
+    public function setStage(array $stage): Project
     {
         $this->stage = $stage;
 
