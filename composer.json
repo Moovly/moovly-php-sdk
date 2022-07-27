@@ -15,7 +15,7 @@
         }
     ],
     "require-dev": {
-        "phpspec/phpspec": "^7.1|^8.0",
+        "phpspec/phpspec": "^5.1 || ^7.0",
         "sebastian/comparator": "^1.2.4 || ^4.0"
     },
     "autoload": {
