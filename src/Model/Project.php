@@ -41,6 +41,9 @@ class Project
     /** @var string */
     private $createdBy;
 
+    /** @var array|null */
+    private $stage;
+
     /**
      * Returns the Id
      *
@@ -303,6 +306,30 @@ class Project
     public function setCreatedBy(string $createdBy): Project
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Returns the stage
+     *
+     * @return array
+     */
+    public function getStage(): ?array
+    {
+        return $this->stage;
+    }
+
+    /**
+     * Sets the CreatedBy
+     *
+     * @param string $createdBy
+     *
+     * @return Project
+     */
+    public function setStage(string $stage): Project
+    {
+        $this->stage = $stage;
 
         return $this;
     }
