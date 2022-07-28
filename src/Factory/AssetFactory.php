@@ -43,14 +43,13 @@ class AssetFactory
         if (empty($assets)) {
             return $result;
         }
-        
+
         $videos = array_values(array_map(function (array $video) {
             return (new Asset())
                 ->setType(Asset::TYPE_VIDEO)
                 ->setScale($video['scale'])
                 ->setSource($video['source'])
-                ->setVersion($video['type'])
-                ;
+                ->setVersion($video['type']);
         }, $assets['video']));
 
         $result = array_merge($videos, $result);
@@ -60,8 +59,7 @@ class AssetFactory
                 ->setType(Asset::TYPE_AUDIO)
                 ->setScale(null)
                 ->setVersion($key)
-                ->setSource($path)
-            ;
+                ->setSource($path);
         }
 
         return $result;
@@ -81,8 +79,7 @@ class AssetFactory
                 ->setType(Asset::TYPE_AUDIO)
                 ->setScale(null)
                 ->setVersion($key)
-                ->setSource($path)
-            ;
+                ->setSource($path);
         }
 
         return $result;
@@ -104,22 +101,19 @@ class AssetFactory
             ->setType(Asset::TYPE_AUDIO)
             ->setScale(null)
             ->setVersion('480p')
-            ->setSource($assets[0]['path'])
-        ;
+            ->setSource($assets[0]['path']);
 
         $result[] = (new Asset())
             ->setType(Asset::TYPE_AUDIO)
             ->setScale(null)
             ->setVersion('720p')
-            ->setSource(sprintf('%s@2x%s', $fileName, $extension))
-        ;
+            ->setSource(sprintf('%s@2x%s', $fileName, $extension));
 
         $result[] = (new Asset())
             ->setType(Asset::TYPE_AUDIO)
             ->setScale(null)
             ->setVersion('1080p')
-            ->setSource(sprintf('%s@4x%s', $fileName, $extension))
-        ;
+            ->setSource(sprintf('%s@4x%s', $fileName, $extension));
 
         return $result;
     }

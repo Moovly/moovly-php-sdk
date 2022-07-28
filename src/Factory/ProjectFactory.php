@@ -35,8 +35,11 @@ class ProjectFactory
             ->setPending($response['state'] == 'pending')
             ->setCreatedAt(new \DateTimeImmutable($response['created_at']))
             ->setUpdatedAt(new \DateTimeImmutable($response['updated_at']))
-            ->setCreatedBy((string) $response['created_by'])
-        ;
+            ->setCreatedBy((string) $response['created_by']);
+
+        if (array_key_exists('stage', $response)) {
+            $project->setStage($response['stage']);
+        }
 
         return $project;
     }

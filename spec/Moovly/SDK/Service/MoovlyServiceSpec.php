@@ -242,6 +242,7 @@ class MoovlyServiceSpec extends ObjectBehavior
             'created_at' => "2017-07-28T08:14:12+00:00",
             'updated_at' => "2017-07-28T08:37:22+00:00",
             'created_by' => 50,
+            'state' => [],
         ]);
 
         $this->beConstructedWith($client, '');
@@ -283,6 +284,7 @@ class MoovlyServiceSpec extends ObjectBehavior
                     'created_at' => "2017-07-28T08:14:12+00:00",
                     'updated_at' => "2017-07-28T08:37:22+00:00",
                     'created_by' => 50,
+                    'state' => [],
                 ],
                 [
                     'id' => 'ABD',
@@ -294,6 +296,7 @@ class MoovlyServiceSpec extends ObjectBehavior
                     'created_at' => "2017-07-28T08:14:12+00:00",
                     'updated_at' => "2017-07-28T08:37:22+00:00",
                     'created_by' => 50,
+                    'state' => [],
                 ]
             ]
         ]);
@@ -312,6 +315,7 @@ class MoovlyServiceSpec extends ObjectBehavior
             'name' => 'Template',
             'original_moov_id' => 'project_id',
             'public' => false,
+            'quality' => [],
             'variables' => [
                 [
                     'id' => 'variable-ABC',
@@ -362,6 +366,7 @@ class MoovlyServiceSpec extends ObjectBehavior
             'name' => 'Template',
             'original_moov_id' => 'project_id',
             'public' => false,
+            'quality' => [],
             'variables' => [
                 [
                     'id' => 'variable-ABC',
@@ -411,6 +416,7 @@ class MoovlyServiceSpec extends ObjectBehavior
                 'name' => 'Template 1',
                 'original_moov_id' => 'project_id_1',
                 'public' => false,
+                'quality' => [],
                 'variables' => [
                     [
                         'id' => 'variable-ABC',
@@ -441,6 +447,7 @@ class MoovlyServiceSpec extends ObjectBehavior
                 'name' => 'Template 2',
                 'original_moov_id' => 'project_id_2',
                 'public' => false,
+                'quality' => [],
                 'variables' => [
                     [
                         'id' => 'variable-ABC',
