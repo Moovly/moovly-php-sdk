@@ -22,14 +22,15 @@ class ValueFactory
         string $externalId,
         string $title,
         array $templateVariables,
-        array $notifications = []
+        array $notifications = [],
+        array $metadata = []
     ): Value {
         return (new Value())
             ->setTitle($title)
             ->setExternalId($externalId)
             ->setTemplateVariables($templateVariables)
             ->setNotifications($notifications)
-        ;
+            ->setMetadata($metadata);
     }
 
     /**
@@ -44,6 +45,6 @@ class ValueFactory
             ->setStatus($response['status'])
             ->setUrl($response['url'])
             ->setError($response['error'])
-        ;
+            ->setMetadata(isset($response['metadata']) ?? []);
     }
 }

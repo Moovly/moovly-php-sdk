@@ -27,6 +27,9 @@ class Value
     private $error = null;
 
     /** @var array */
+    private $metadata = [];
+
+    /** @var array */
     private $notifications = [];
 
     /**
@@ -202,6 +205,26 @@ class Value
     public function setNotifications(array $notifications): Value
     {
         $this->notifications = $notifications;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param array $notifications
+     *
+     * @return Value
+     */
+    public function setMetadata(array $metadata): Value
+    {
+        $this->metadata = $metadata;
 
         return $this;
     }
