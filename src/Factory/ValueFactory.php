@@ -45,6 +45,6 @@ class ValueFactory
             ->setStatus($response['status'])
             ->setUrl($response['url'])
             ->setError($response['error'])
-            ->setMetadata(isset($response['metadata']) ? $response['metadata'] : []);
+            ->setMetadata(isset($response['metadata']) ?? []);
     }
 }
