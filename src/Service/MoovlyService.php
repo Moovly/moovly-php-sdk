@@ -299,6 +299,7 @@ final class MoovlyService
             return [
                 'external_id' => $value->getExternalId(),
                 'title' => $value->getTitle(),
+                'metadata' => $value->getMetadata(),
                 'template_variables' => $value->getTemplateVariables()
             ];
         }, $job->getValues());
