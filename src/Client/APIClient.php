@@ -52,6 +52,7 @@ class APIClient
     const RESTFUL_ROOT_JOB = '/generator/{version}/jobs';
 
     const ENDPOINT_GET_LICENSE_BY_USER = 'license/{version}/users/me/licenses';
+    const ENDPOINT_GET_CREDIT_ACCOUNT_BY_USER = 'license/{version}/users/me/credit-account';
 
 
     /** @var Engine */
@@ -261,6 +262,23 @@ class APIClient
     {
         $endpoint = $this->stringEngine->render(
             self::ENDPOINT_GET_CONTRACTS_BY_USER,
+            ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
+        );
+
+        $response = $this->client->get($endpoint, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s', $this->token)
+            ]
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+
+    public function getUserCreditAccount()
+    {
+        $endpoint = $this->stringEngine->render(
+            self::ENDPOINT_GET_CREDIT_ACCOUNT_BY_USER,
             ['version' => self::DOMAIN_TO_VERSION[self::DOMAIN_GENERATOR]]
         );
 
