@@ -274,7 +274,6 @@ class APIClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-
     public function getUserCreditAccount()
     {
         $endpoint = $this->stringEngine->render(
