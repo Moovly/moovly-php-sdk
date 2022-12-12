@@ -442,6 +442,19 @@ final class MoovlyService
     public function getRemainingCredits()
     {
         try {
+            $contracts = $this->client->getUserContracts();
+        } catch (ClientException $ce) {
+            $response = $ce->getResponse();
+
+            throw ExceptionFactory::create($response, $ce);
+        }
+
+        return $contracts['state'];
+    }
+
+    public function getCreditAccount()
+    {
+        try {
             $creditAccount = $this->client->getUserCreditAccount();
         } catch (ClientException $ce) {
             $response = $ce->getResponse();
@@ -449,7 +462,7 @@ final class MoovlyService
             throw ExceptionFactory::create($response, $ce);
         }
 
-        return $creditAccount['total_balance'];
+        return $creditAccount;
     }
 
     public function getRendersForUser(string $externalType, int $page = 1, int $pageSize = 25): array
