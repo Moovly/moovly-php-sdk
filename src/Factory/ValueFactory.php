@@ -23,14 +23,17 @@ class ValueFactory
         string $title,
         array $templateVariables,
         array $notifications = [],
-        array $metadata = []
+        ?array $metadata = []
     ): Value {
-        return (new Value())
+        $value = (new Value())
             ->setTitle($title)
             ->setExternalId($externalId)
             ->setTemplateVariables($templateVariables)
-            ->setNotifications($notifications)
-            ->setMetadata($metadata);
+            ->setNotifications($notifications);
+        if ($metadata) {
+            $value->setMetadata($metadata);
+        }
+        return $value;
     }
 
     /**

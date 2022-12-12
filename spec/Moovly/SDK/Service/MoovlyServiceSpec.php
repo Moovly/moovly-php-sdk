@@ -273,33 +273,33 @@ class MoovlyServiceSpec extends ObjectBehavior
                 Argument::type('int')
             )
             ->willReturn([
-            'results' => [
-                [
-                    'id' => 'ABC',
-                    'label' => 'Project #2',
-                    'description' => 'A description',
-                    'thumb' => 'https://abc.com/g',
-                    'archived' => true,
-                    'pending' => false,
-                    'created_at' => "2017-07-28T08:14:12+00:00",
-                    'updated_at' => "2017-07-28T08:37:22+00:00",
-                    'created_by' => 50,
-                    'state' => [],
-                ],
-                [
-                    'id' => 'ABD',
-                    'label' => 'Project #3',
-                    'description' => 'A description',
-                    'thumb' => 'https://abc.com/g',
-                    'archived' => true,
-                    'pending' => false,
-                    'created_at' => "2017-07-28T08:14:12+00:00",
-                    'updated_at' => "2017-07-28T08:37:22+00:00",
-                    'created_by' => 50,
-                    'state' => [],
+                'results' => [
+                    [
+                        'id' => 'ABC',
+                        'label' => 'Project #2',
+                        'description' => 'A description',
+                        'thumb' => 'https://abc.com/g',
+                        'archived' => true,
+                        'pending' => false,
+                        'created_at' => "2017-07-28T08:14:12+00:00",
+                        'updated_at' => "2017-07-28T08:37:22+00:00",
+                        'created_by' => 50,
+                        'state' => [],
+                    ],
+                    [
+                        'id' => 'ABD',
+                        'label' => 'Project #3',
+                        'description' => 'A description',
+                        'thumb' => 'https://abc.com/g',
+                        'archived' => true,
+                        'pending' => false,
+                        'created_at' => "2017-07-28T08:14:12+00:00",
+                        'updated_at' => "2017-07-28T08:37:22+00:00",
+                        'created_by' => 50,
+                        'state' => [],
+                    ]
                 ]
-            ]
-        ]);
+            ]);
 
         $this->beConstructedWith($client, '');
 
@@ -497,7 +497,7 @@ class MoovlyServiceSpec extends ObjectBehavior
         $value->getTemplateVariables()->willReturn([
             "template-variable-1_id" => "Text value here",
         ]);
-
+        $value->getMetadata()->willReturn([]);
         $template->getId()->willReturn('VALUE');
         $job->getOptions()->willReturn([]);
         $job->getNotifications()->willReturn([]);
@@ -523,6 +523,7 @@ class MoovlyServiceSpec extends ObjectBehavior
                     'status' => 'pending',
                     'url' => 'https://abc.com/g',
                     'error' => null,
+                    'metadata' => [],
                 ]
             ]
         ]);
