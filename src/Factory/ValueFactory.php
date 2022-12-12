@@ -33,6 +33,7 @@ class ValueFactory
         if ($metadata) {
             $value->setMetadata($metadata);
         }
+
         return $value;
     }
 
